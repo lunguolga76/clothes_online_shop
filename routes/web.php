@@ -24,9 +24,15 @@ use App\Http\Controllers\ManufacturerController;
 Route::get('/', function() {
     return view('front.homepage');
 });
-Route::get('/blog', [BlogController::class, 'index']);
+Route::get('/category', function() {
+    return view('front.category');
+});
+Route::get('/category/product/{id}', function() {
+    return view('front.product-details');
+});
+Route::get('/blog', [BlogController::class, 'index'])->name('bloghome');
 
-Route::get('/blog/article/{articleId}', [BlogController::class, 'show'])->name('article.show');
+Route::get('/blog/article/{id}', [BlogController::class, 'show'])->name('article.show');
 
 Route::get('/contacts',[ContactUsController::class, 'contactUs'])->name('contactUs.show');
 

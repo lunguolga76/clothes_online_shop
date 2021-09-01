@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class ProductReview extends Model
 {
     use HasFactory;
+    protected $fillable = ['product_id', 'content'];
 
     public function product(){
         return $this->belongsTo(Product::class);

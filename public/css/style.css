@@ -9,13 +9,13 @@ body{
 
 .nav .nav-link, #header-search{
     min-width: 130px;
-    padding:10px;
-    margin: 0 15px;
+    padding:8px;
+    margin: 0 10px;
     background-color:#e0e5ec;
     border:none;
     outline: none;
     color:rgb(42, 68, 173);
-    font-size: 18px;
+    font-size: 15px;
     font-weight: bold;
     text-transform: uppercase;
     text-align: center;

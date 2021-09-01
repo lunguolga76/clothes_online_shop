@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use  App\Models\Blog\Article;
+use  App\Models\Blog\Rubric;
+use  App\Models\Blog\Author;
 class BlogController extends Controller
 {
-    private $articles;
+    /*private $articles;
     public function __construct(){
         $this->articles=[
         [
@@ -65,27 +67,34 @@ class BlogController extends Controller
         ],
 
         ];
-    }
+    }*/
     public function index(){
-      
-        return view ('front.blog-list',['articles'=>$this->articles]);  
+
+        
+        $articles=Article::with('rubric','author')->orderBy('created_at', 'desc')->paginate(5);
+        
+       //dd(Article::all()->toArray());
+        return view ('front.blog-list',compact('articles'));  
     }
 
-    public function show(int $articleId){
+    public function show(int $id){
         
-        $article=null;
+        $article=Article::where('id', $id)->firstOrFail();
+        $article->views +=1;
+        $article->update();
+        /*$article=null;
 
-        foreach($this->articles as $articleItem){
+        /foreach($this->articles as $articleItem){
             if($articleItem['id']===$articleId){
                 $article=$articleItem;
                 
             }
         }
         if(!$article){
-            abort(404);
-        }
+            abort(404);}*/
+        
 
-        return view ('front.blog-article',['article'=>$article]);
+        return view ('front.blog-article', compact('article'));
 
         }
    

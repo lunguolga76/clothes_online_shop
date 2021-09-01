@@ -19,6 +19,6 @@ class ContactUsController extends Controller
      //dd($request->all());
     $contactUsRequest = $request->validated();
    //dd($request->validated());
-    return redirect(route('contactUs.show'))->with('message', 'The message was sent successfully!');;
+    return redirect(route('contactUs.show'))->with('message', 'The message was sent successfully!');
 }
 }
