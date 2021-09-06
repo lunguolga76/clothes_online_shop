@@ -9,7 +9,7 @@ class Category extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['section_id', 'name','description'];
+    protected $fillable = ['section_id', 'name','image_path','discount','description'];
 
     public function section(){
         return $this->belongTo(Section::class);

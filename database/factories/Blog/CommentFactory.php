@@ -24,7 +24,7 @@ class CommentFactory extends Factory
         return [
             'content' => $this->faker->text($maxNbChars = 200) ,
             'author_id'=>$this->faker->numberBetween(1,4),
-            'article_id'=>$this->faker->numberBetween(1,15),
+            'article_id'=>$this->faker->numberBetween(1,6),
             'created_at'=>$this->faker->dateTime(),
             'updated_at'=>$this->faker->dateTime(),
         ];

@@ -28,7 +28,7 @@ class ArticleFactory extends Factory
             'published_at'=>$this->faker->dateTime(),
             'image' =>$this->faker->imageUrl($width = 640, $height = 480) ,
             'author_id'=>$this->faker->numberBetween(1,4),
-            'rubric_id'=>$this->faker->numberBetween(1,5),
+            'blog_category_id'=>$this->faker->numberBetween(1,5),
             'created_at'=>$this->faker->dateTime(),
             'updated_at'=>$this->faker->dateTime(),
             

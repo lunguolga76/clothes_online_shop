@@ -18,7 +18,7 @@
                                     <li class="breadcrumb-item active">{{$article->title}}</li>
                                 </ol>
 
-                                <span class="btn btn-outline-secondary m-2 text-decoration-none"><a href="marketing-category.html" title="" class="text-decoration-none text-secondary">{{$article->rubric->name}}</a></span>
+                                <span class="btn btn-outline-secondary m-2 text-decoration-none"><a href="marketing-category.html" title="" class="text-decoration-none text-secondary">{{$article->blog_category->name}}</a></span>
 
                                 <h3 class="fs-2 fw-bold">{{$article['title']}}</h3>
 
@@ -46,10 +46,6 @@
                                     <p>{{$article->body}} </p>
 
                                 </div><!-- end pp -->
-
-                
-
-
                                 </div><!-- end pp -->
                             </div><!-- end content -->
 

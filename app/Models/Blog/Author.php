@@ -8,9 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class Author extends Model
 {
     use HasFactory;
-    protected $fillable=['first_name','last_name','email'];
+   
+    protected $fillable=['first_name','last_name','email','phone'];
+    
     public function articles(){
+
         return $this->hasMany(Article::class);
+    }
+    public function comments(){
+        
+        return $this->hasMany(Comment::class);
     }
 
 

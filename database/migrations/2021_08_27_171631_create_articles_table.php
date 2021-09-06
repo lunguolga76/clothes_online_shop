@@ -22,7 +22,7 @@ class CreateArticlesTable extends Migration
                 $table->string('image')->nullable();
                 $table->integer('views')->unsigned()->default(0);
                 $table->unsignedBigInteger('author_id');
-                $table->unsignedBigInteger('rubric_id');
+                $table->unsignedBigInteger('blog_category_id');
                 $table->timestamps();
     
                 $table->foreign('author_id')
@@ -30,9 +30,9 @@ class CreateArticlesTable extends Migration
                 ->on('authors')
                 ->onDelete('CASCADE')
                 ->onUpdate('CASCADE');
-                $table->foreign('rubric_id')
+                $table->foreign('blog_category_id')
                 ->references('id')
-                ->on('rubrics')
+                ->on('blog_categories')
                 ->onDelete('CASCADE')
                 ->onUpdate('CASCADE');
         });

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use  App\Models\Blog\Article;
-use  App\Models\Blog\Rubric;
+use  App\Models\Blog\BlogCategory;
 use  App\Models\Blog\Author;
 class BlogController extends Controller
 {
@@ -71,7 +71,7 @@ class BlogController extends Controller
     public function index(){
 
         
-        $articles=Article::with('rubric','author')->orderBy('created_at', 'desc')->paginate(5);
+        $articles=Article::with('blog_category','author')->orderBy('created_at', 'desc')->paginate(5);
         
        //dd(Article::all()->toArray());
         return view ('front.blog-list',compact('articles'));  

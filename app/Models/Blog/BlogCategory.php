@@ -5,13 +5,14 @@ namespace App\Models\Blog;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Tagnew extends Model
+class BlogCategory extends Model
 {
     use HasFactory;
-
-    protected $fillable=['name'];
+    
+    protected  $fillable= ['name', 'description', 'imgage'];
 
     public function articles(){
-        return $this->belonsToMany(Article::class);
+        
+        return $this->hasMany(Article::class);
     }
 }
