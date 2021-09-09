@@ -4,6 +4,8 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Pagination\Paginator;
+use  App\Models\Blog\Article;
+use  App\Models\Blog\BlogCategory;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -25,5 +27,11 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Paginator::useBootstrap();
+
+        view()->composer('layouts.front_blog_sidebar', function($view){
+        $view->with('popular_articles', Article::orderBy('views','desc')->limit(4)->get());
+        $view->with('blog_cats', BlogCategory::withCount('articles')->orderBy('articles_count', 'desc')->get());
+        });
+       
     }
 }

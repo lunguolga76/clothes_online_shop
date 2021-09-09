@@ -3,6 +3,7 @@
 namespace Database\Factories\Blog;
 
 use App\Models\Blog\Article;
+
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class ArticleFactory extends Factory
@@ -26,8 +27,8 @@ class ArticleFactory extends Factory
             'body' => $this->faker->paragraph(12),
             'description' => $this->faker->paragraph(2),
             'published_at'=>$this->faker->dateTime(),
-            'image' =>$this->faker->imageUrl($width = 640, $height = 480) ,
-            'author_id'=>$this->faker->numberBetween(1,4),
+            'image' =>$this->faker->image('storage/app/public',$width = 640, $height = 480, null, false),
+            'author_id'=>$this->faker->numberBetween(1,5),
             'blog_category_id'=>$this->faker->numberBetween(1,5),
             'created_at'=>$this->faker->dateTime(),
             'updated_at'=>$this->faker->dateTime(),

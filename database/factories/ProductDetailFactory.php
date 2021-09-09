@@ -24,7 +24,7 @@ class ProductDetailFactory extends Factory
     {
         return [
             'product_id'=>Product::factory(),
-            'image_path'=>$this->faker->imageUrl($width = 640, $height = 480),
+            'image_path'=>$this->faker->image('storage/app/public',$width = 640, $height = 480, null, false),
             'status'=>$this->faker->boolean(true),
             'color'=>$this->faker->colorName,
             'weight'=>$this->faker->randomFloat($nbMaxDecimals = NULL, $min = 0, $max = 2),

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use  App\Models\Blog\Article;
-use  App\Models\Blog\BlogCategory;
+use  App\Models\Blog\Comment;
 use  App\Models\Blog\Author;
 class BlogController extends Controller
 {
@@ -71,29 +71,37 @@ class BlogController extends Controller
     public function index(){
 
         
-        $articles=Article::with('blog_category','author')->orderBy('created_at', 'desc')->paginate(5);
+        $articles=Article::paginate(5);
         
+      
        //dd(Article::all()->toArray());
         return view ('front.blog-list',compact('articles'));  
     }
 
-    public function show(int $id){
-        
-        $article=Article::where('id', $id)->firstOrFail();
+    public function search(Request $request)
+{
+    
+    $search = $request->all();
+    dd($request->all());
+
+    if ($request->sort == "published_at_ascending")
+    {
+       $articles->orderBy('created_at', 'asc');
+   } elseif ($request->sort == "published_at_descending") 
+   {
+       $articles->orderBy('created_at', 'desc');
+   }
+   $articles = $articles->get();
+    return response/view;
+}
+
+
+    public function show(int $articleId){
+       // dd(Article::all());
+        $article=Article::with('comments')->findOrFail($articleId);
         $article->views +=1;
         $article->update();
-        /*$article=null;
-
-        /foreach($this->articles as $articleItem){
-            if($articleItem['id']===$articleId){
-                $article=$articleItem;
-                
-            }
-        }
-        if(!$article){
-            abort(404);}*/
-        
-
+      
         return view ('front.blog-article', compact('article'));
 
         }

@@ -1,7 +1,7 @@
                              
                              <div class="sidebar">
-                            <div class="widget-no-style bg-light m-3 rounded border border-secondar">
-                                <div class="newsletter-widget text-center align-self-center fw-bold">
+                            <div class="widget-no-style bg-warning m-3 rounded border border-secondary">
+                                <div class="newsletter-widget text-center align-self-center fw-bold mt-2">
                                     <h3>Subscribe Today!</h3>
                                     <p>Subscribe to our weekly Newsletter and receive updates via email.</p>
                                     <form class="form-inline m-2" method="post">
@@ -11,44 +11,43 @@
                                 </div><!-- end newsletter -->
                             </div>
 
-                            <div class="widget bg-light rounded border border-secondar">
+                            <div class="widget bg-light rounded border border-secondary">
                                 <h2 class="widget-title text-center mt-2">Recent Posts</h2>
                                 <div class="blog-list-widget">
                                     <div class="list-group">
-                                        <a href="marketing-single.html" class="list-group-item list-group-item-action flex-column align-items-start">
+                                    @foreach($popular_articles as $article)
+                                        <a href="{{route('article.show', [$article->id])}}" class="list-group-item list-group-item-action flex-column align-items-start">
                                             <div class="w-100 justify-content-between">
-                                                <img src="../images/woman.jpg" alt="" class="img-fluid rounded float-start mb-1">
-                                                <h5 class="mb-2 mt-2 fw-bold">5 Beautiful buildings you need to before dying</h5>
-                                                <small>12 Jan, 2016</small>
+                                                <img src="{{$article->getImageUrAttribute()}}" alt=""  width="90" height="90"class="img-fluid rounded float-start m-2">
+                                                <div><h5 class="mb-2 mt-2 fw-bold">{{$article->title}}</h5>
+                                                <small>{{$article->published_at}}</small>
+                                                <small>/ <i class="fa fa-eye"> {{$article->views}} </i></small>
+                                            </div>
+                                                
                                             </div>
                                         </a>
+                                        @endforeach
 
-                                        <a href="marketing-single.html" class="list-group-item list-group-item-action flex-column align-items-start">
-                                            <div class="w-100 justify-content-between">
-                                                <img src="../images/man.jpg" alt="" class="img-fluid rounded float-start mb-1" >
-                                                <h5 class="mb-2 mt-2 fw-bold">Let's make an introduction for creative life</h5>
-                                                <small>11 Jan, 2016</small>
-                                            </div>
-                                        </a>
-
-                                        <a href="marketing-single.html" class="list-group-item list-group-item-action flex-column align-items-start">
-                                            <div class="w-100 last-item justify-content-between">
-                                                <img src="../images/medusa.jpg" alt="" class="img-fluid rounded float-start mb-1">
-                                                <h5 class="mb-2 mt-2 fw-bold">Did you see the most beautiful sea in the world?</h5>
-                                                <small>07 Jan, 2016</small>
-                                            </div>
-                                        </a>
+                                      
                                     </div>
                                 </div><!-- end blog-list -->
                             </div><!-- end widget -->
 
-                            <div id="" class="widget border border-secondar bg-light mt-2">
-                                <h2 class="widget-title text-center fw-bold">Advertising</h2>
-                                <div class="banner-spot clearfix">
-                                    <div class="banner-img">
-                                        <img src="upload/banner_03.jpg" alt="" class="img-fluid">
-                                    </div><!-- end banner-img -->
-                                </div><!-- end banner -->
+                            <div class="widget border border-secondary rounded mt-3 bg-light">
+                                <h2 class="widget-title text-center">Popular Categories</h2>
+                                <div class="link-widget">
+                                    <ul>
+                                        @foreach($blog_cats as $cat)
+                                        
+                                        <li class="text-uppercase fw-bold fs-5">
+                                            <a href="#" class="link-dark text-decoration-none">{{$cat->name}} 
+                                             <span>({{$cat->articles_count}})</span>
+                                        </a></li>
+                                        
+                                     @endforeach 
+                                    </ul>
+                                </div><!-- end link-widget -->
                             </div><!-- end widget -->
-   
                         </div><!-- end sidebar -->
+                   
+                      

@@ -6,14 +6,20 @@ Blog-list
 
 
 @section('content')
-
+            <form action="{{ route('search') }}" method="GET" class="md-form input-group m-4 shadow-sm">
+                <select class="form-select text-secondary" aria-label="Default select example" name="sort" id="sort">
+                <option selected="" disabled="disabled" value="Select Department">Select</option>
+                <option value="published_at_ascending"@if (request()->sort == "published_at_ascending") selected @endif>published date ascending</option>
+                 <option value="published_at_descending"@if (request()->sort == "published_at_descending") selected @endif>published date descending</option>
+                </select>
+                 </form>
                         <div class="page-wrapper">
                             <div class="blog-custom-build mt-1">
                                @foreach($articles as $article)
                                 <div class="blog-box wow fadeIn">
                                     <div class="post-media">
                                         <a href="" title="">
-                                            <img src="{{$article->image}}" alt="" class="img-fluid rounded">
+                                            <img src="{{$article->getImageUrAttribute()}}" alt="" class="img-fluid rounded">
                                             <div class="hovereffect">
                                                 <span></span>
                                             </div>
@@ -33,7 +39,7 @@ Blog-list
                                         <p class="fs-5 fw-bold">{{$article->description}}</p>
                                         <small><a href="marketing-single.html" title=""class="text-decoration-none">/ {{$article->blog_category->name}} /</a></small>
                                         <small><a href="#" title="" class="text-decoration-none">by {{$article->author->first_name}} /</a></small>
-                                        <small><a href="marketing-single.html" title=""class="text-decoration-none"> {{$article->published_at}} /</a></small>
+                                        <small><a href="marketing-single.html" title=""class="text-decoration-none"> {{$article->getPublishedAtAttribute()}} /</a></small>
                                         <small><a href="#" title=""class="text-decoration-none"><i class="fa fa-eye"> {{$article->views}} </i></a></small>
                                     </div><!-- end meta -->
                                 </div><!-- end blog-box -->

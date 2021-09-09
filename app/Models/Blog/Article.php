@@ -3,7 +3,9 @@
 namespace App\Models\Blog;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 class Article extends Model
 {
@@ -11,6 +13,15 @@ class Article extends Model
 
     protected  $fillable= ['title', 'body','description','published_at','image','author_id','blog_category_id'];
 
+    public function getImageUrAttribute()
+    {
+        return \Illuminate\Support\Facades\Storage::url($this->image);
+
+    }
+    public function getPublishedAtAttribute()
+    {
+        return Carbon::createFromFormat('Y-m-d H:i:s',$this->created_at)->format('d F,Y');;
+    }
     public function blog_category(){
 
         return $this->belongsTo(BlogCategory::class);

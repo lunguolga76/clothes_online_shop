@@ -31,10 +31,10 @@
 						<li> <a href="#"> Delivery </a></li>
 						<div class="payment d-flex justify-content-start align-items-start">
 							<div class="payment-images m-1">
-								<img class="payment rounded" src="images/icons/dhl1.png">
+								<img class="payment rounded" src="/images/icons/dhl1.png">
 							</div> 
 							<div class="payment-images m-1">
-								<img class="payment rounded" src="images/icons/fed.png">
+								<img class="payment rounded" src="/images/icons/fed.png">
 							</div>
 						</div>
 					</ul>
@@ -47,13 +47,13 @@
 						<li> <a href="#"> Safety Payment </a></li>
 						<div class="payment d-flex justify-content-start align-items-start">
 						<div class="payment-images m-1">
-							<img class="payment" src="images/icons/pay-visa.png">
+							<img class="payment" src="/images/icons/pay-visa.png">
 						</div> 
 						<div class="payment-images m-1">
 							<img class="payment" src="/images/icons/pay-mastercard.png">
 						</div>
 						<div class="payment-images m-1">
-							<img class="payment" src="images/icons/pay-american-ex.png">
+							<img class="payment" src="/images/icons/pay-american-ex.png">
 						</div>
 					</div>
 					</ul>

@@ -31,6 +31,7 @@ Route::get('/category/product/{id}', function() {
     return view('front.product-details');
 });
 Route::get('/blog', [BlogController::class, 'index'])->name('bloghome');
+Route::get('/search', [BlogController::class, 'search'])->name('search');
 
 Route::get('/blog/article/{id}', [BlogController::class, 'show'])->name('article.show');
 
