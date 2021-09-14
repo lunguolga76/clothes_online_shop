@@ -18,7 +18,7 @@
                                     @foreach($popular_articles as $article)
                                         <a href="{{route('article.show', [$article->id])}}" class="list-group-item list-group-item-action flex-column align-items-start">
                                             <div class="w-100 justify-content-between">
-                                                <img src="{{$article->getImageUrAttribute()}}" alt=""  width="90" height="90"class="img-fluid rounded float-start m-2">
+                                                <img src="{{$article->getImageUrlAttribute()}}" alt=""  width="90" height="90"class="img-fluid rounded float-start m-2">
                                                 <div><h5 class="mb-2 mt-2 fw-bold">{{$article->title}}</h5>
                                                 <small>{{$article->published_at}}</small>
                                                 <small>/ <i class="fa fa-eye"> {{$article->views}} </i></small>

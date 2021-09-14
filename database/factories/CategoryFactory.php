@@ -26,8 +26,8 @@ class CategoryFactory extends Factory
         return [
             'section_id'=>Section::factory(),
              'name'=>$this->faker->word(),
-             'image_path'=>$this->faker->imageUrl($width = 640, $height = 480),
-             'description'=>$this->faker->paragraph(4)
+             'image_path'=>$this->faker->image('storage/app/public',$width = 640, $height = 480, null, false),
+             'description'=>$this->faker->paragraph(1)
         ];
     }
 }

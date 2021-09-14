@@ -6,12 +6,13 @@ Blog-list
 
 
 @section('content')
-            <form action="{{ route('search') }}" method="GET" class="md-form input-group m-4 shadow-sm">
+            <form action="{{ route('bloghome') }}" method="GET" class="md-form input-group m-4 shadow-sm">
                 <select class="form-select text-secondary" aria-label="Default select example" name="sort" id="sort">
                 <option selected="" disabled="disabled" value="Select Department">Select</option>
-                <option value="published_at_ascending"@if (request()->sort == "published_at_ascending") selected @endif>published date ascending</option>
-                 <option value="published_at_descending"@if (request()->sort == "published_at_descending") selected @endif>published date descending</option>
+                <option value="published_at"@if (request()->sort == "published_at") selected @endif>published date desc</option>
+                 <option value="title"@if (request()->sort == "title") selected @endif>name</option>
                 </select>
+                <input type="hidden" name="allsearch" value="{{ request()->allsearch }}" />
                  </form>
                         <div class="page-wrapper">
                             <div class="blog-custom-build mt-1">
@@ -19,7 +20,7 @@ Blog-list
                                 <div class="blog-box wow fadeIn">
                                     <div class="post-media">
                                         <a href="" title="">
-                                            <img src="{{$article->getImageUrAttribute()}}" alt="" class="img-fluid rounded">
+                                            <img src="{{$article->getImageUrlAttribute()}}" alt="" class="img-fluid rounded">
                                             <div class="hovereffect">
                                                 <span></span>
                                             </div>

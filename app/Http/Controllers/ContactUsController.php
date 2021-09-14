@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ContactUsRequest;
 use Illuminate\Http\Request;
 use Illuminate\Mail\Message;
-use Mail;
+use Illuminate\Contracts\Mail\Mailer;
+
+
 
 
 class ContactUsController extends Controller
@@ -17,7 +19,7 @@ class ContactUsController extends Controller
         return view ('front.contact-us'); 
     }
 
-    public function storeContactInfo(ContactUsRequest $request)
+    public function storeContactInfo(ContactUsRequest $request, Mailer $mailer)
     {
         $data=$request->validated();
         $data['messageText']=$data['message'];

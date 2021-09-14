@@ -3,16 +3,24 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Section;
 
 class SectionController extends Controller
 {
-    public function show($id){
+    public function index(){
 
 
-        $sections=Section::where('id',$id)->limit(2);
-        dd(Section::all()->toArray());
+       $sections=Section::offset(0)->limit(2)->get();
+       //dd(Section::all()->toArray());
         //$posts=$category->posts()->orderBy('id','desc')->paginate(2);
 
-        return view('section.show', compact('section'));
+        return view('front.homepage', compact('sections'));
 }
+public function show(int $sectionId){
+    // dd(Article::all());
+     $section=Section::findOrFail($sectionId);
+   
+     return view ('front.category', compact('section'));
+
+     }
 }

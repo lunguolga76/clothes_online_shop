@@ -5,6 +5,8 @@ use App\Http\Controllers\UserInfoController;
 use App\Http\Controllers\EmailCheckApiController;
 use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\SectionController;
 use App\Http\Controllers\ManufacturerController;
 {
 
@@ -21,17 +23,22 @@ use App\Http\Controllers\ManufacturerController;
 */
 
  
-Route::get('/', function() {
+//Route::get('/', 'IndexController::class, index')->name('home');
+/*Route::get('/', function() {
     return view('front.homepage');
 });
-Route::get('/category', function() {
+/*Route::get('/category', function() {
     return view('front.category');
-});
-Route::get('/category/product/{id}', function() {
+});*/
+/*Route::get('/category/product/{id}', function() {
     return view('front.product-details');
-});
+});*/
+Route::get('/', [SectionController::class, 'index'])->name('home');
+Route::get('/category/{id}', [CategoryController::class, 'index'])->name('show.categories');
+Route::get('/category/{product}', [CategoryController::class, 'show']);
+
+Route::get('/category/product/{id}', [CategoryController::class, 'show'])->name('categoryhome');
 Route::get('/blog', [BlogController::class, 'index'])->name('bloghome');
-Route::get('/search', [BlogController::class, 'search'])->name('search');
 
 Route::get('/blog/article/{id}', [BlogController::class, 'show'])->name('article.show');
 

@@ -26,66 +26,24 @@ Homepage
 </div> <!-- row.// -->
 <hr>
 <div class="row">
-	<div class="col-md-3-24"> <strong>Filter by:</strong> </div> <!-- col.// -->
+	<div class="col-md-3-24"> <strong>Category</strong> </div> <!-- col.// -->
 	<div class="col-md-21-24"> 
-		<ul class="list-inline">
-		  <li class="list-inline-item dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">   Supplier type </a>
-            <div class="dropdown-menu p-3" style="max-width:400px;"">	
-		      <label class="form-check">
-		      	<a href="#">
-		      	 <input type="checkbox" class="form-check-input"> Good supplier
-			    </a>
-		      </label>
-		      <label class="form-check">
-		      	<a href="#">
-		      	 <input type="checkbox" class="form-check-input"> Best supplier
-			    </a>
-		      </label>
-		      <label class="form-check">
-		      	<a href="#">
-		      	 <input type="checkbox" class="form-check-input"> New supplier
-			    </a>
-		      </label>
-            </div> <!-- dropdown-menu.// -->
-	      </li>
-	      <li class="list-inline-item dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">  Country </a>
-            <div class="dropdown-menu p-3" style="max-width:400px;"">	
-		      <label class="form-check">
-		      	<a href="#">
-		      	 <input type="checkbox" class="form-check-input"> China
-			    </a>
-		      </label>
-		      <label class="form-check">
-		      	<a href="#">
-		      	 <input type="checkbox" class="form-check-input"> Japan
-			    </a>
-		      </label>
-		      <label class="form-check">
-		      	<a href="#">
-		      	 <input type="checkbox" class="form-check-input"> Uzbekistan
-			    </a>
-		      </label>
-		      <label class="form-check">
-		      	<a href="#">
-		      	 <input type="checkbox" class="form-check-input"> Russia
-			    </a>
-		      </label>
-            </div> <!-- dropdown-menu.// -->
-	      </li>
-		  <li class="list-inline-item"><a href="#">Product type</a></li>
-		  <li class="list-inline-item"><a href="#">Brand name</a></li>
-		  <li class="list-inline-item"><a href="#">Color</a></li>
-		  <li class="list-inline-item"><a href="#">Size</a></li>
-		  <li class="list-inline-item">
-		  	<div class="form-inline">
-		  		<label class="mr-2">Price</label>
-				<input class="form-control form-control-sm" placeholder="Min" type="number">
-					<span class="px-2"> - </span>
-				<input class="form-control form-control-sm" placeholder="Max" type="number">
-				<button type="submit" class="btn btn-sm ml-2">Ok</button>
-			</div>
-		  </li>
-		</ul>
+		
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+        @foreach($categories as $category)
+    <a href=""> 
+    <div class="card bg-secondary text-white mb-3 mx-1" style="max-width: 18rem;">
+    <img src="{{$category->getImageUrlAttribute()}}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title text-uppercase fw-bold text-center">{{$category->name}}</h5>
+        <p class="card-text">{{$category->description}}</p>
+      </div>
+</div>
+    </a>
+    
+
+        @endforeach
+		</div>
 	</div> <!-- col.// -->
 </div> <!-- row.// -->
 	</div> <!-- card-body .// -->
@@ -97,7 +55,7 @@ Homepage
 
 <div class="row-sm">
 <div class="col-md-3 col-sm-6">
-    <a href="{{'/category/product/{id}'}}">
+    <a href="{{route('categoryhome')}}">
         <figure class="card card-product">
             <div class="img-wrap"> 
                 <h4 class="text-center text-dark font-weight-bold  mt-3"> Future</h4>
