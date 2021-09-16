@@ -1,4 +1,4 @@
-@extends('layouts.front_layout')
+@extends('layouts.front_blog')
 @section('hometitle')
 {{$article['title']}}
 
@@ -6,26 +6,23 @@
 
 
 @section('content')
-<section class="section lb m3rem">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
+                   
                         <div class="page-wrapper">
                             <div class="blog-title-area">
                                 <ol class="breadcrumb hidden-xs-down">
                                     <li class="breadcrumb-item"><a href="/">Home</a></li>
                                     <li class="breadcrumb-item"><a href="/blog">Blog</a></li>
-                                    <li class="breadcrumb-item active">The golden rules you need to know for a positive life</li>
+                                    <li class="breadcrumb-item active">{{$article->title}}</li>
                                 </ol>
 
-                                <span class="btn btn-outline-secondary m-2 text-decoration-none"><a href="marketing-category.html" title="" class="text-decoration-none text-secondary">Lifestyle</a></span>
+                                <span class="btn btn-outline-secondary m-2 text-decoration-none"><a href="marketing-category.html" title="" class="text-decoration-none text-secondary">{{$article->blog_category->name}}</a></span>
 
                                 <h3 class="fs-2 fw-bold">{{$article['title']}}</h3>
 
                                 <div class="blog-meta big-meta">
-                                <small><a href="marketing-single.html" title=""class="text-decoration-none">{{$article['created_at']}}</a></small>
-                                        <small><a href="#" title="" class="text-decoration-none">by Jack</a></small>
-                                        <small><a href="#" title=""class="text-decoration-none"><i class="fa fa-eye"></i> 2291</a></small>
+                                <small><a href="marketing-single.html" title=""class="text-decoration-none">{{$article->getPublishedAtAttribute()}}</a></small>
+                                        <small><a href="#" title="" class="text-decoration-none">by {{$article->author->first_name}}</a></small>
+                                        <small><a href="#" title=""class="text-decoration-none"><i class="fa fa-eye"></i> {{$article->views}}</a></small>
                                 </div><!-- end meta -->
 
                                 <div class="post-sharing">
@@ -38,48 +35,14 @@
                             </div><!-- end title -->
 
                             <div class="single-post-media">
-                                <img src="../images/champagne-3515140_1920.jpg" alt="" class="img-fluid">
+                                <img src="{{$article->image}}" alt="" class="img-fluid">
                             </div><!-- end media -->
 
                             <div class="blog-content">  
                                 <div class="pp">
-                                    <p>In lobortis pharetra mattis. Morbi nec nibh iaculis, <a href="#">bibendum augue a</a>, ultrices nulla. Nunc velit ante, lacinia id tincidunt eget, faucibus nec nisl. In mauris purus, bibendum et gravida dignissim, venenatis commodo lacus. Duis consectetur quis nisi nec accumsan. Pellentesque enim velit, ut tempor turpis. Mauris felis neque, egestas in lobortis et,iaculis at nunc ac, rhoncus sagittis ipsum. </p>
-
-                                    <h3><strong>Maecenas non convallis quam, eu sodales justo. Pellentesque quis lectus elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</strong></h3>
-
-                                    <p>Donec nec metus sed leo sollicitudin ornare sed consequat neque. Aliquam iaculis neque quis dui venenatis, eget posuere felis viverra. Ut sit amet feugiat elit, nec elementum velit. Sed eu nisl convallis, efficitur turpis eu, euismod nunc. Proin neque enim, malesuada non lobortis nec, facilisis et lectus. Ie consectetur. Nam eget neque ac ex fringilla dignissim eu ac est. Nunc et nisl vel odio posuere. </p>
-
-                                    <p>Vivamus non condimentum orci. Pellentesque venenatis nibh sit amet est vehicula lobortis. Cras eget aliquet eros. Nunc lectus elit, suscipit at nunc sed, finibus imperdiet ipsum. Maecenas dapibus neque sodales nulla finibus volutpat. Integer pulvinar massa vitae ultrices posuere. Proin ut tempor turpis. Mauris felis neque, egestas in lobortis et, sodales non ante. Ut vestibulum libero quis luctus tempus. Nullam eget dignissim massa. Vivamus id condimentum orci. Nunc ac sem urna. Aliquam et hendrerit nisl massa nunc. </p>
+                                    <p>{{$article->body}} </p>
 
                                 </div><!-- end pp -->
-
-                                <img src="../images/hand.jpg" alt="" class="img-fluid rounded float-start">
-
-                                <div class="pp">
-                                    <h3><strong>Nam non velit est. Sed lobortis arcu vitae nunc molestie consectetur. Nam eget neque ac ex fringilla dignissim eu ac est. Nunc et nisl vel odio posuere. </strong></h3>
-
-                                    <p>Vivamus non condimentum orci. Pellentesque venenatis nibh sit amet est vehicula lobortis. Cras eget aliquet eros. Nunc lectus elit, suscipit at nunc sed, finibus imperdiet ipsum. Maecenas dapibus neque sodales nulla finibus volutpat. Integer pulvinar massa vitae ultrices posuere. Proin ut tempor turpis. Mauris felis neque, egestas in lobortis et, sodales non ante. Ut vestibulum libero quis luctus tempus. Nullam eget dignissim massa. Vivamus id condimentum orci. Nunc ac sem urna. Aliquam et hendrerit nisl massa nunc. </p>
-
-                                    <p>Morbi pharetra porta consequat. Aenean et diam sapien. <a href="#">Interdum et malesuada</a> fames ac ante ipsum primis in faucibus. Pellentesque dictum ligula iaculis, feugiat metus eu, sollicitudin ex. Quisque eu ullamcorper ligula. In vel ex ac purus finibus viverra. Maecenas pretium lobortis turpis. Fusce lacinia nisi in tortor massa nunc.</p>
-
-                                    <ul class="check">
-                                        <li>Integer sit amet odio ac lectus imperdiet elementum.</li>
-                                        <li>Praesent vitae lacus sed lacus ullamcorper mollis.</li>
-                                        <li>Donec vitae metus ac felis vulputate tincidunt non et ex.</li>
-                                        <li>In dapibus sapien at viverra venenatis.</li>
-                                        <li>Pellentesque mollis velit id maximus finibus.</li>
-                                    </ul>
-
-                                    <p>Proin ultricies nulla consectetur, sollicitudin dolor at, sollicitudin mauris. Maecenas at nunc nunc. Ut nulla felis, tincidunt et porttitor at, rutrum in dolor. Aenean id tincidunt ligula. Donec vitae placerat odio. Mauris accumsan nibh ut nunc maximus, ac auctor elit vehicula. Cras leo sem, vehicula a ultricies ac, condimentum vitae lectus. Sed ut eros euismod, luctus nisl eu, congue odio. </p>
-
-                                    <p><img src="../images/party.jpg" class="img-fluid rounded float-start m-2" width="340" alt="">Suspendisse ultrices placerat dolor sed efficitur. Morbi in laoreet diam. Pellentesque habitant m tristique senectus et netus et malesuada fames ac turpis egestas. Mauris ut massa id lectus laoreet porta non in metus. Donec nibh justo, tincidunt non justo ut, tincidunt malesuada turpis. Cras pellentesque sollicitudin ex eget pharetra.orbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris ut massa id lectus laoreet porta non in metus. Donec nibh justo, tincidunt non justo ut, tincidunt malesuada turpis. Cras pellentesque sollicitudin ex eget pharetra.</p>
-
-                                    <h3><strong>Nam non velit est. Sed lobortis arcu vitae nunc molestie consectetur. Nam eget neque ac ex fringilla dignissim eu ac est. Nunc et nisl vel odio posuere. </strong></h3>
-
-
-                                    <p>Aliquam eget maximus odio. Aliquam varius nisl ut leo fermentum, id fringilla magna tempus. Curabitur quis bibendum lorem, ut suscipit tellus. Morbi id dictum justo, et massa nunc. Mauris laoreet, neque et varius malesuada, justo neque consequat dolor, sit amet semper dui ligula commodo enim. Duis mauris magna, euismod in ante sed, laoreet faucibus elit. Nam euismod vulputate lorem, nec tincidunt lacus volutpat sit amet. In libero eros, dignissim vitae quam sed, maximus consectetur justo. Donec id orci eget odio convallis pellentesque. Quisque urna cras amet.Vivamus non condimentum orci. Pellentesque venenatis nibh sit amet est vehicula lobortis. Cras eget aliquet eros. Nunc lectus elit, suscipit at nunc sed, finibus imperdiet ipsum. Maecenas dapibus neque sodales nulla finibus volutpat. Integer pulvinar massa vitae ultrices posuere. Proin ut tempor turpis. Mauris felis neque, egestas in lobortis et, sodales non ante. Ut vestibulum libero quis luctus tempus. Nullam eget dignissim massa. Vivamus id condimentum orci. Nunc ac sem urna. Aliquam et hendrerit nisl massa nunc. </p>
-
-                                    <p>Vivamus non condimentum orci. Pellentesque venenatis nibh sit amet est vehicula lobortis. Cras eget aliquet eros. Nunc lectus elit, suscipit at nunc sed, finibus imperdiet ipsum. Maecenas dapibus neque sodales nulla finibus volutpat. Integer pulvinar massa vitae ultrices posuere. Proin ut tempor turpis. Mauris felis neque, egestas in lobortis et, sodales non ante. Ut vestibulum libero quis luctus tempus. Nullam eget dignissim massa. Vivamus id condimentum orci. Nunc ac sem urna. Aliquam et hendrerit nisl massa nunc. </p>
                                 </div><!-- end pp -->
                             </div><!-- end content -->
 
@@ -121,7 +84,7 @@
                                     </div><!-- end col -->
 
                                     <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
-                                        <h4><a href="#">Jessica</a></h4>
+                                        <h4><a href="#">{{$article->author->first_name}}</a></h4>
                                         <p>Quisque sed tristique felis. Lorem <a href="#">visit my website</a> amet, consectetur adipiscing elit. Phasellus quis mi auctor, tincidunt nisl eget, finibus odio. Duis tempus elit quis risus congue feugiat. Thanks for stop Markedia!</p>
 
                                         <div class="topsocial">
@@ -187,41 +150,20 @@
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="comments-list">
+                                        @foreach($article->comments as $comment)
                                             <div class="media">
                                                 <a class="media-left" href="#">
                                                     <img src="upload/author.jpg" alt="" class="rounded-circle">
                                                 </a>
                                                 <div class="media-body">
                                                     <h4 class="media-heading user_name">Amanda Martines <small>5 days ago</small></h4>
-                                                    <p>Exercitation photo booth stumptown tote bag Banksy, elit small batch freegan sed. Craft beer elit seitan exercitation, photo booth et 8-bit kale chips proident chillwave deep v laborum. Aliquip veniam delectus, Marfa eiusmod Pinterest in do umami readymade swag. Selfies iPhone Kickstarter, drinking vinegar jean.</p>
+                                                    <p>{{$comment->content}}</p>
                                                     <a href="#" class="btn btn-primary btn-sm">Reply</a>
                                                 </div>
                                             </div>
-                                            <div class="media">
-                                                <a class="media-left" href="#">
-                                                    <img src="upload/author_01.jpg" alt="" class="rounded-circle">
-                                                </a>
-                                                <div class="media-body">
-
-                                                    <h4 class="media-heading user_name">Baltej Singh <small>5 days ago</small></h4>
-
-                                                    <p>Drinking vinegar stumptown yr pop-up artisan sunt. Deep v cliche lomo biodiesel Neutra selfies. Shorts fixie consequat flexitarian four loko tempor duis single-origin coffee. Banksy, elit small.</p>
-
-                                                    <a href="#" class="btn btn-primary btn-sm">Reply</a>
-                                                </div>
-                                            </div>
-                                            <div class="media last-child">
-                                                <a class="media-left" href="#">
-                                                    <img src="upload/author_02.jpg" alt="" class="rounded-circle">
-                                                </a>
-                                                <div class="media-body">
-
-                                                    <h4 class="media-heading user_name">Marie Johnson <small>5 days ago</small></h4>
-                                                    <p>Kickstarter seitan retro. Drinking vinegar stumptown yr pop-up artisan sunt. Deep v cliche lomo biodiesel Neutra selfies. Shorts fixie consequat flexitarian four loko tempor duis single-origin coffee. Banksy, elit small.</p>
-
-                                                    <a href="#" class="btn btn-primary btn-sm">Reply</a>
-                                                </div>
-                                            </div>
+                                            @endforeach
+                                         
+                                            
                                         </div>
                                     </div><!-- end col -->
                                 </div><!-- end row -->
@@ -244,66 +186,7 @@
                                 </div>
                             </div>
                         </div><!-- end page-wrapper -->
-                    </div><!-- end col -->
-
-                    <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
-                        <div class="sidebar">
-                            <div class="widget-no-style bg-light m-3 rounded">
-                                <div class="newsletter-widget text-center align-self-center fw-bold">
-                                    <h3>Subscribe Today!</h3>
-                                    <p>Subscribe to our weekly Newsletter and receive updates via email.</p>
-                                    <form class="form-inline" method="post">
-                                        <input type="text" name="email" placeholder="Add your email here.." required class="form-control" />
-                                        <input type="submit" value="Subscribe" class="btn btn-default btn-block bg-dark text-white mt-1 mb-1" />
-                                    </form>         
-                                </div><!-- end newsletter -->
-                            </div>
-
-                            <div class="widget bg-light rounded">
-                                <h2 class="widget-title text-center mt-2">Recent Posts</h2>
-                                <div class="blog-list-widget">
-                                    <div class="list-group">
-                                        <a href="marketing-single.html" class="list-group-item list-group-item-action flex-column align-items-start">
-                                            <div class="w-100 justify-content-between">
-                                                <img src="../images/woman.jpg" alt="" class="img-fluid float-left">
-                                                <h5 class="mb-1">5 Beautiful buildings you need to before dying</h5>
-                                                <small>12 Jan, 2016</small>
-                                            </div>
-                                        </a>
-
-                                        <a href="marketing-single.html" class="list-group-item list-group-item-action flex-column align-items-start">
-                                            <div class="w-100 justify-content-between">
-                                                <img src="../images/man.jpg" alt="" class="img-fluid rounded float-start">
-                                                <h5 class="mb-1">Let's make an introduction for creative life</h5>
-                                                <small>11 Jan, 2016</small>
-                                            </div>
-                                        </a>
-
-                                        <a href="marketing-single.html" class="list-group-item list-group-item-action flex-column align-items-start">
-                                            <div class="w-100 last-item justify-content-between">
-                                                <img src="../images/medusa.jpg" alt="" class="img-fluid float-left">
-                                                <h5 class="mb-1">Did you see the most beautiful sea in the world?</h5>
-                                                <small>07 Jan, 2016</small>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div><!-- end blog-list -->
-                            </div><!-- end widget -->
-
-                            <div id="" class="widget">
-                                <h2 class="widget-title">Advertising</h2>
-                                <div class="banner-spot clearfix">
-                                    <div class="banner-img">
-                                        <img src="upload/banner_03.jpg" alt="" class="img-fluid">
-                                    </div><!-- end banner-img -->
-                                </div><!-- end banner -->
-                            </div><!-- end widget -->
-   
-                        </div><!-- end sidebar -->
                     
-                    </div><!-- end col -->
-                </div><!-- end row -->
-            </div><!-- end container -->
           
-        </section>
+      
 @endsection

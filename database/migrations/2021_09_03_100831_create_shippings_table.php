@@ -15,11 +15,22 @@ class CreateShippingsTable extends Migration
     {
         Schema::create('shippings', function (Blueprint $table) {
             $table->id();
-            $table->integer('order_id');
-            $table->integer('customer_address_id');
-            $table->tinyInteger('status');
-
+            $table->unsignedBigInteger('order_id');
+            $table->unsignedBigInteger('customer_address_id');
+            $table->tinyInteger('status')->default(1);
             $table->timestamps();
+
+            $table->foreign('order_id')
+            ->references('id')
+            ->on('orders')
+            ->onDelete('CASCADE')
+            ->onUpdate('CASCADE');
+
+            $table->foreign('customer_address_id')
+            ->references('id')
+            ->on('customer_addresses')
+            ->onDelete('CASCADE')
+            ->onUpdate('CASCADE');
         });
     }
 

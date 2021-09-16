@@ -1,0 +1,42 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class CreateArticleBlogTagTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('article_blog_tag', function (Blueprint $table) {
+            $table->unsignedBigInteger('article_id');
+            $table->unsignedBigInteger('blog_tag_id');
+
+            $table->foreign('article_id')
+            ->references('id')
+            ->on('articles')
+            ->onDeleta('CASCADE')
+            ->onUpdate('CASCADE');
+            $table->foreign('blog_tag_id')
+            ->references('id')
+            ->on('blog_tags')
+            ->onDeleta('CASCADE')
+            ->onUpdate('CASCADE');
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('article_blog_tag');
+    }
+}

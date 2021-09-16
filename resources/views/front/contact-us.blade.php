@@ -38,7 +38,7 @@ Contacts
                 <div class="input-group-prepend">
                     <i class="fas fa-user prefix text-white"></i>
                 </div>
-                <input type="text" name="name" id="name" required="required" class="form-control text-secondary" placeholder="Your name">
+                <input type="text" name="name" id="name"  required="required" class="form-control text-secondary" placeholder="Your name">
               </div>
               @error('name')
                 <div class="alert alert-danger">{{$message}}</div>
@@ -47,7 +47,7 @@ Contacts
                 <div class="input-group-prepend">
                     <i class="fas fa-envelope prefix text-white"></i>
                 </div>
-                <input type="text" name="email" id="email" required="required" class="form-control text-secondary" placeholder="Your email">
+                <input type="text" name="email" id="email"   required="required" class="form-control text-secondary" placeholder="Your email">
             </div>
             @error('email')
                 <div class="alert alert-danger">{{$message}}</div>

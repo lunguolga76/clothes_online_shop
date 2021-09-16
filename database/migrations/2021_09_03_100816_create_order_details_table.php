@@ -15,11 +15,23 @@ class CreateOrderDetailsTable extends Migration
     {
         Schema::create('order_details', function (Blueprint $table) {
             $table->id();
-            $table->integer('order_id');
-            $table->integer('product_id');
+            $table->unsignedBigInteger('order_id');
+            $table->unsignedBigInteger('product_id');
             $table->float('unit_price');
             $table->integer('quantity');
             $table->timestamps();
+
+            $table->foreign('order_id')
+            ->references('id')
+            ->on('orders')
+            ->onDelete('CASCADE')
+            ->onUpdate('CASCADE');
+
+            $table->foreign('product_id')
+            ->references('id')
+            ->on('products')
+            ->onDelete('CASCADE')
+            ->onUpdate('CASCADE');
         });
     }
 

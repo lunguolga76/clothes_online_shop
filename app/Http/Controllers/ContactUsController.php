@@ -4,6 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ContactUsRequest;
 use Illuminate\Http\Request;
+use Illuminate\Mail\Message;
+use Illuminate\Contracts\Mail\Mailer;
+use App\Services\Mail\ContactUsMailer;
+
+
+
 
 class ContactUsController extends Controller
 {
@@ -14,11 +20,13 @@ class ContactUsController extends Controller
         return view ('front.contact-us'); 
     }
 
-    public function storeContactInfo(ContactUsRequest $request)
+    public function storeContactInfo(ContactUsRequest $request, ContactUsMailer $mailer)
     {
-     //dd($request->all());
-    $contactUsRequest = $request->validated();
-   //dd($request->validated());
-    return redirect(route('contactUs.show'))->with('message', 'The message was sent successfully!');;
+        $data=$request->validated();
+
+        $mailer->send($data);
+       
+
+    return redirect(route('contactUs.show'))->with('message', 'The message was sent successfully!');
 }
 }
