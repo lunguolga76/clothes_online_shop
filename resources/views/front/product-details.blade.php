@@ -148,29 +148,24 @@ Contacts
 		<aside class="col-sm-6">
 <article class="card-body">
 <!-- short-info-wrap -->
-	<h3 class="title mb-3">Original Version of Some product name</h3>
+	<h3 class="title mb-3">{{$product->name}}</h3>
 
 <div class="mb-3"> 
 	<var class="price h3 text-warning"> 
-		<span class="currency">US $</span><span class="num">1299</span>
+		<span class="currency">$ </span><span class="num">{{$product->unit_price}}</span>
 	</var> 
-	<span>/per kg</span> 
+
 </div> <!-- price-detail-wrap .// -->
 <dl>
   <dt>Description</dt>
-  <dd><p>Here goes description consectetur adipisicing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-quis nostrud exercitation ullamco </p></dd>
+  <dd><p>{{$product->description}}</p></dd>
 </dl>
 <dl class="row">
-  <dt class="col-sm-3">Model#</dt>
-  <dd class="col-sm-9">12345611</dd>
+  <dt class="col-sm-3">Cod</dt>
+  <dd class="col-sm-9">{{$product->code}}</dd>
 
   <dt class="col-sm-3">Color</dt>
   <dd class="col-sm-9">Black and white </dd>
-
-  <dt class="col-sm-3">Delivery</dt>
-  <dd class="col-sm-9">Russia, USA, and Europe </dd>
 </dl>
 <div class="rating-wrap">
 
@@ -209,11 +204,19 @@ quis nostrud exercitation ullamco </p></dd>
 				  <dd>
 				  	<label class="form-check form-check-inline">
 					  <input class="form-check-input" name="inlineRadioOptions" id="inlineRadio2" value="option2" type="radio">
-					  <span class="form-check-label">SM</span>
+					  <span class="form-check-label">S</span>
 					</label>
 					<label class="form-check form-check-inline">
 					  <input class="form-check-input" name="inlineRadioOptions" id="inlineRadio2" value="option2" type="radio">
-					  <span class="form-check-label">MD</span>
+					  <span class="form-check-label">M</span>
+					</label>
+					<label class="form-check form-check-inline">
+					  <input class="form-check-input" name="inlineRadioOptions" id="inlineRadio2" value="option2" type="radio">
+					  <span class="form-check-label">L</span>
+					</label>
+					<label class="form-check form-check-inline">
+					  <input class="form-check-input" name="inlineRadioOptions" id="inlineRadio2" value="option2" type="radio">
+					  <span class="form-check-label">XL</span>
 					</label>
 					<label class="form-check form-check-inline">
 					  <input class="form-check-input" name="inlineRadioOptions" id="inlineRadio2" value="option2" type="radio">
@@ -224,8 +227,8 @@ quis nostrud exercitation ullamco </p></dd>
 		</div> <!-- col.// -->
 	</div> <!-- row.// -->
 	<hr>
-	<a href="#" class="btn  btn-warning"> <i class="fa fa-envelope"></i> Contact Supplier </a>
-	<a href="#" class="btn  btn-outline-warning"> Start Order </a>
+	<a href="#" class="btn  btn-warning"> <i class="fas fa-shopping-bag"></i> Add to bag </a>
+	
 <!-- short-info-wrap .// -->
 </article> <!-- card-body.// -->
 		</aside> <!-- col.// -->

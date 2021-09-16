@@ -10,20 +10,14 @@ use  App\Models\Blog\Author;
 class BlogController extends Controller
 {
     
-    public function index(ArticleFilter $request){
+    public function index (Request $request, ArticleFilter $filters)
+    {
 
-       // dd($request);
-        $articles=Article::filter($request)->paginate(9);
-       // dd(Article::all()->toArray());
-       //dd($request);
-      
-       
+        $articles=Article::filter($filters)->orderBy('published_at','desc')->paginate(10);
+     
         return view ('front.blog-list',compact('articles')); 
       // return ArticleResource::collection($articles); 
-    }
- 
-
-        
+    } 
 
 
     public function show(int $articleId){

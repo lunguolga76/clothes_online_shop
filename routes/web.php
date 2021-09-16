@@ -7,6 +7,7 @@ use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\SectionController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ManufacturerController;
 {
 
@@ -34,10 +35,13 @@ use App\Http\Controllers\ManufacturerController;
     return view('front.product-details');
 });*/
 Route::get('/', [SectionController::class, 'index'])->name('home');
-Route::get('/category/{id}', [CategoryController::class, 'index'])->name('show.categories');
-Route::get('/category/{product}', [CategoryController::class, 'show']);
+Route::get('/category', [CategoryController::class, 'index'])->name('index.categories');
+Route::get('/category/{id}', [CategoryController::class, 'show'])->name('show.category');
+Route::get('/product', [ProductController::class, 'index'])->name('index.products');
+Route::get('/product/{id}', [ProductController::class, 'show'])->name('show.product');
 
-Route::get('/category/product/{id}', [CategoryController::class, 'show'])->name('categoryhome');
+
+
 Route::get('/blog', [BlogController::class, 'index'])->name('bloghome');
 
 Route::get('/blog/article/{id}', [BlogController::class, 'show'])->name('article.show');

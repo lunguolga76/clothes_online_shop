@@ -1,4 +1,4 @@
-                             
+<div class="col-lg-4 col-md-12 col-sm-12 col-xs-12"> 
                              <div class="sidebar">
                             <div class="widget-no-style bg-warning m-3 rounded border border-secondary">
                                 <div class="newsletter-widget text-center align-self-center fw-bold mt-2">
@@ -49,5 +49,6 @@
                                 </div><!-- end link-widget -->
                             </div><!-- end widget -->
                         </div><!-- end sidebar -->
+                        </div> <!-- end col -->
                    
                       

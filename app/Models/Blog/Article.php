@@ -4,7 +4,7 @@ namespace App\Models\Blog;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-use App\Http\Filters\QueryFilter;
+use App\Http\Filters\Filter;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
@@ -13,7 +13,7 @@ class Article extends Model
 {
     use HasFactory;
 
-    protected  $fillable= ['title', 'body','description','published_at','image','author_id','blog_category_id'];
+    protected  $fillable= ['title', 'body','description','published_at','image','views','author_id','blog_category_id'];
 
     public function getImageUrlAttribute()
     {
@@ -40,7 +40,8 @@ class Article extends Model
         
         return $this->belongsToMany(BlogTag::class);
     }
-    public function scopeFilter(Builder $builder, QueryFilter $filter){
+    public function scopeFilter(Builder $builder, Filter $filter): Builder
+    {
         return $filter->apply($builder);
     }
 }

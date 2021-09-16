@@ -4,16 +4,32 @@ Blog-list
 
 @endsection
 
-
-@section('content')
-            <form action="{{ route('bloghome') }}" method="GET" class="md-form input-group m-4 shadow-sm">
-                <select class="form-select text-secondary" aria-label="Default select example" name="sort" id="sort">
-                <option selected="" disabled="disabled" value="Select Department">Select</option>
-                <option value="published_at"@if (request()->sort == "published_at") selected @endif>published date desc</option>
-                 <option value="title"@if (request()->sort == "title") selected @endif>name</option>
+        @section('content')
+        <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
+        <div class="row">
+            <div class="col-3">
+            <form action="{{ route('bloghome') }}" method="GET">
+            <div class="form-group m-3">
+                <input type="text"class="form-controll text-secondary border border-secondary rounded"name="title" placeholder="select by title">
+            </div>
+            <div class="form-group m-3">
+                <input type="text"class="form-controll text-secondary border border-secondary rounded"name="category" placeholder="select by category">
+            </div>
+            <div class="form-group m-3">
+            <select class="form-select text-secondary border border-secondary" aria-label="Default select example" name="sort" id="sort">
+                <option selected="" disabled="disabled" value="Select Department">Sort by date</option>
+                <option value="created_at">Newest</option>
+                 <option value="created_at">Latest</option>
                 </select>
-                <input type="hidden" name="allsearch" value="{{ request()->allsearch }}" />
-                 </form>
+                </div>
+                <div  class="form-group m-3">
+               <button type="submit" class="btn btn-warning">Filter</button>
+            </div>
+               
+          
+        </form>
+        </div>
+        </div>
                         <div class="page-wrapper">
                             <div class="blog-custom-build mt-1">
                                @foreach($articles as $article)
@@ -54,5 +70,6 @@ Blog-list
                                 {{ $articles->links() }}
                                 </nav>
                             </div><!-- end col -->
-                        </div><!-- end row -->    
+                        </div><!-- end row -->   
+                        </div><!-- end col --> 
 @endsection

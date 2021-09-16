@@ -3,26 +3,35 @@
 namespace App\Http\Filters;
 
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\Schema;
 
-class ArticleFilter extends QueryFilter
+class ArticleFilter extends Filter
 {
-    /*
-     * @param string $status
-     */
-    public function published_at($published_at)
+    
+    public function title(string $value = null): Builder
     {
-        $this->builder->where('published_at', 'desc');
+        return $this->builder->where('title', 'like', "%$value%" );
     }
 
-    /*
-     * @param string $title
-     */
-    public function title($title)
+    public function blog_category_id(string $id = null): Builder
     {
-        $this->builder->where('title', 'desc');
-
         
-            }
+        return $this->builder->when($id, function($query) use($id){
+            $query->where('blog_category_id', $id);
+        });
+       
+    }
+
+    public function sort(array $value = []): Builder
+    {
+        if (isset($value['by']) && ! Schema::hasColumn('published_at', $value['by'])) {
+            return $this->builder;
+        }
+
+        return $this->builder->orderBy(
+            $value['by'] ?? 'published_at', $value['order'] ?? 'desc'
+        );
+    }
     
 
 }
