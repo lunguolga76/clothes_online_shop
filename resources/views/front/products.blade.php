@@ -44,11 +44,12 @@ Homepage
 
 <div class="row-sm">
 
-    @foreach($products as $product)
+  
     <div class="col-md-3 col-sm-6">
     <a href="{{route('show.product', [$product->id])}}">
         <figure class="card card-product">
-            <div class="img-wrap"> 
+           
+        <div class="img-wrap"> 
               
                 <img src="">
             </div>
@@ -65,8 +66,7 @@ Homepage
         </figure>
     </a>  <!-- card // -->
     </div> <!-- col // -->
-    @endforeach
-
+   
 
 
 </div> <!-- row.// -->

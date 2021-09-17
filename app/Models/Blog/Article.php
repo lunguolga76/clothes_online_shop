@@ -8,8 +8,9 @@ use App\Http\Filters\Filter;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
+use App\Models\LoggableInterface;
 
-class Article extends Model
+class Article extends Model implements LoggableInterface
 {
     use HasFactory;
 
@@ -43,5 +44,15 @@ class Article extends Model
     public function scopeFilter(Builder $builder, Filter $filter): Builder
     {
         return $filter->apply($builder);
+    }
+
+    public function toArray():array
+    {
+        return parent::toArray();
+    }
+
+    public function toString():string
+    {
+        return 'Article with '. $this->id;
     }
 }

@@ -4,8 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\LoggableInterface;
 
-class Product extends Model
+class Product extends Model implements LoggableInterface
 {
     use HasFactory;
     
@@ -33,7 +34,16 @@ class Product extends Model
 }
     public function tags(){
     return $this->belongsToMany(Tag::class);
-}
+}   
+    public function toArray():array
+    {
+        return parent::toArray();
+    }
+    
+    public function toString():string
+    {
+        return 'Product with '. $this->id;
+    }
 
 
 

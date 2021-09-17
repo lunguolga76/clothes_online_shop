@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Manufacturer;
+use  App\Services\Logging\ViewLogger;
 
 class ManufacturerController extends Controller
 {
@@ -25,7 +26,16 @@ class ManufacturerController extends Controller
         ]);
        // dd($manufacturer->toArray());
         //dd($manufacturertwo->toArray());
-        dd($manufacturerthree->toArray());
+       return redirect('manufacturer/' .$manufacturer->id . '/view');
         
+    }
+
+    public function view (int $id, ViewLogger $viewLogger)
+    {
+        $manufacturer= Manufacturer::findOrFail($id);
+        $viewLogger->logView($manufacturer);
+
+        dd($manufacturer->toArray());
+
     }
 }

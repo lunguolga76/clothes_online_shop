@@ -7,6 +7,8 @@ use App\Http\Filters\ArticleFilter;
 use  App\Models\Blog\Article;
 use  App\Models\Blog\Comment;
 use  App\Models\Blog\Author;
+use  App\Services\Logging\ViewLogger;
+
 class BlogController extends Controller
 {
     
@@ -20,11 +22,14 @@ class BlogController extends Controller
     } 
 
 
-    public function show(int $articleId){
-       // dd(Article::all());
+    public function show(int $articleId, ViewLogger $viewLogger){
+     
         $article=Article::with('comments')->findOrFail($articleId);
+        //dd(Article::all());
         $article->views +=1;
         $article->update();
+        $viewLogger->logView($article);
+        
       
         return view ('front.blog-article', compact('article'));
 

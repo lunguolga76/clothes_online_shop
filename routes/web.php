@@ -49,7 +49,8 @@ Route::get('/blog/article/{id}', [BlogController::class, 'show'])->name('article
 Route::get('/contacts',[ContactUsController::class, 'contactUs'])->name('contactUs.show');
 
 Route::post('/store-contact-info',[ContactUsController::class, 'storeContactInfo'])->name('contactUs.store');
-Route::get('/manufacturer', [\App\Http\Controllers\ManufacturerController::class, 'create'])->name('manufacturer.store');
+Route::get('/manufacturer/create', [\App\Http\Controllers\ManufacturerController::class, 'create']);
+Route::get('/manufacturer/{id}/view', [\App\Http\Controllers\ManufacturerController::class, 'view']);
 
 
 /*})->middleware('response.log');

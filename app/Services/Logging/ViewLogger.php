@@ -7,28 +7,27 @@ use Psr\Log\LoggerInterface;
 use App\Models\User;
 
 class ViewLogger
-
 {
-    private LoggableInterface $logger;
+    private LoggerInterface $logger;
 
     public function __construct(LoggerInterface $logger)
     {
         $this->logger=$logger;
     }
 
-    public function logView(LoggableInterface $loggable):void
+    public function logView(LoggableInterface $loggable, ?User $user = null):void
     {
         if($user){
             $name=$user->name;
         }else{
             $name='Unknown';
         }
-        
+
         $this->logger->info(
             sprintf(
-                '$s viewd $s',
+                '%s viewd %s',
                 $name,
-                (string)$loggable
+                $loggable->toString(),
             ),
             $loggable->toArray(),
         );
