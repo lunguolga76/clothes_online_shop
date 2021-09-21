@@ -7,30 +7,29 @@ use App\Http\Filters\ArticleFilter;
 use  App\Models\Blog\Article;
 use  App\Models\Blog\Comment;
 use  App\Models\Blog\Author;
+use  App\Services\Logging\ViewLogger;
+
 class BlogController extends Controller
 {
     
-    public function index(ArticleFilter $request){
+    public function index (Request $request, ArticleFilter $filters)
+    {
 
-       // dd($request);
-        $articles=Article::filter($request)->paginate(9);
-       // dd(Article::all()->toArray());
-       //dd($request);
-      
-       
+        $articles=Article::filter($filters)->orderBy('published_at','desc')->paginate(10);
+     
         return view ('front.blog-list',compact('articles')); 
       // return ArticleResource::collection($articles); 
-    }
- 
-
-        
+    } 
 
 
-    public function show(int $articleId){
-       // dd(Article::all());
+    public function show(int $articleId, ViewLogger $viewLogger){
+     
         $article=Article::with('comments')->findOrFail($articleId);
+        //dd(Article::all());
         $article->views +=1;
         $article->update();
+        $viewLogger->logView($article);
+        
       
         return view ('front.blog-article', compact('article'));
 

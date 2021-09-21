@@ -26,7 +26,7 @@ class ProductFactory extends Factory
             'category_id'=>Category::factory(),
             'name'=>$this->faker->word(),
             'code'=>$this->faker->randomNumber($nbDigits = NULL, $strict = false), 
-            'description'=>$this->faker->paragraph(3),
+            'description'=>$this->faker->sentence($nbWords = 4, $variableNbWords = true),
             'quantity'=>$this->faker->numberBetween(100,1000),
             'unit_price'=>$this->faker->randomFloat($nbMaxDecimals = NULL, $min = 0, $max = 90)
         ];
