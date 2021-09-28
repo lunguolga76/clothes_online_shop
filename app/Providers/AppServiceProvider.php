@@ -2,6 +2,10 @@
 
 namespace App\Providers;
 
+use App\Services\Logging\DebugRequestLogger;
+use App\Services\Logging\DummyRequestLogger;
+use App\Services\Logging\ProductionRequestLogger;
+use App\Services\Logging\RequestLoggerInterface;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Pagination\Paginator;
 use  App\Models\Blog\Article;
@@ -16,7 +20,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+       $this->app->singleton(RequestLoggerInterface::class, function (){
+           return $this->app->make(DebugRequestLogger::class);
+       });
+
+
+
     }
 
     /**
@@ -32,6 +41,6 @@ class AppServiceProvider extends ServiceProvider
         $view->with('popular_articles', Article::orderBy('views','desc')->limit(4)->get());
         $view->with('blog_cats', BlogCategory::withCount('articles')->orderBy('articles_count', 'desc')->get());
         });
-       
+
     }
 }
