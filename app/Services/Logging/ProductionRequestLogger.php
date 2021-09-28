@@ -15,9 +15,10 @@ class ProductionRequestLogger extends AbstractRequestLogger
     {
         $url = $request->url();
         $input = $request->all();
+        $ipAddress = $request->ip();
         $method = $request->method();
 
-        return (compact(['url', 'input', 'method']));
+        return (compact(['url', 'input', 'ipAddress','method']));
     }
 }
 

@@ -21,6 +21,9 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
        $this->app->singleton(RequestLoggerInterface::class, function (){
+           if(config('app.env')==='production'){
+               return $this->app->make(ProductionRequestLogger::class);
+           }
            return $this->app->make(DebugRequestLogger::class);
        });
 
