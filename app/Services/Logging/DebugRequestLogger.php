@@ -19,10 +19,7 @@ class DebugRequestLogger extends AbstractRequestLogger
         $uri = $request->path();
         $input = $request->all();
         $method = $request->method();
-        $value = $request->header('X-Header-Name');
         $ipAddress = $request->ip();
-        $token = $request->bearerToken();
-        $contentTypes = $request->getAcceptableContentTypes();
         $query = $request->query();
         $archived = $request->boolean('archived');
 
@@ -32,10 +29,7 @@ class DebugRequestLogger extends AbstractRequestLogger
             'uri',
             'input',
             'method',
-            'value',
             'ipAddress',
-            'token',
-            'contentTypes',
             'query',
             'archived']));
 

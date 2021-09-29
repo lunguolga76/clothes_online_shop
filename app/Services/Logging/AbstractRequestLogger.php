@@ -19,5 +19,6 @@ public  function logRequest(Request $request): void
     );
 }
 abstract  protected function prepareMessage():string;
+
 abstract  protected function extractRequestData(Request $request):array;
 }
