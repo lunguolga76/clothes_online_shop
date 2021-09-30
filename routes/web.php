@@ -8,6 +8,7 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\SectionController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ManufacturerController;
 {
 
@@ -34,7 +35,9 @@ use App\Http\Controllers\ManufacturerController;
 /*Route::get('/category/product/{id}', function() {
     return view('front.product-details');
 });*/
-Route::get('/', [SectionController::class, 'index'])->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/section', [SectionController::class, 'index'])->name('index.section');
+Route::get('/section{id}', [SectionController::class, 'show'])->name('index.section');
 Route::get('/category', [CategoryController::class, 'index'])->name('index.categories');
 Route::get('/category/{id}', [CategoryController::class, 'show'])->name('show.category');
 Route::get('/product', [ProductController::class, 'index'])->name('index.products');
