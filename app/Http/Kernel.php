@@ -25,6 +25,9 @@ class Kernel extends HttpKernel
         \App\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
         RequestedRouteLoggingMiddleware::class,
+        \App\Http\Middleware\RequestLoggingMiddleware::class,
+
+
     ];
 
     /**
@@ -68,6 +71,6 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'response.log' => ResponseDataLoggingMiddleware::class,
-        
+
     ];
 }
