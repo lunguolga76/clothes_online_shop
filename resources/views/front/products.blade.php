@@ -13,7 +13,7 @@ Homepage
 	<div class="col-md-3-24"> <strong>Your are here:</strong> </div> <!-- col.// -->
 	<nav class="col-md-18-24"> 
 	<ol class="breadcrumb">
-	    <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+	    <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
 	    <li class="breadcrumb-item"><a href="bedroom.html">Bedroom</a></li>
 	    <li class="breadcrumb-item active" aria-current="page">Items</li>
 	</ol>  
@@ -43,16 +43,17 @@ Homepage
 </div>
 
 <div class="row-sm">
-
+@foreach($products as $product)
   
     <div class="col-md-3 col-sm-6">
     <a href="{{route('show.product', [$product->id])}}">
         <figure class="card card-product">
-           
+        
         <div class="img-wrap"> 
               
                 <img src="">
             </div>
+            
             <figcaption class="info-wrap text-center border-none">
                
             <h4 class="text-center text-dark font-weight-bold  mt-3"> {{$product->name}}</h4>
@@ -67,7 +68,7 @@ Homepage
     </a>  <!-- card // -->
     </div> <!-- col // -->
    
-
+@endforeach
 
 </div> <!-- row.// -->
 

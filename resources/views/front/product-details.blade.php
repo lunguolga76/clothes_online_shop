@@ -1,6 +1,6 @@
 @extends('layouts.front_layout')
 @section('hometitle')
-Contacts
+
 
 @endsection
 
@@ -119,10 +119,10 @@ Contacts
 <div class="container">
 <nav class="mb-3">
 <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="#">Home</a></li>
-    <li class="breadcrumb-item"><a href="#">Category name</a></li>
-    <li class="breadcrumb-item"><a href="#">Sub category</a></li>
-    <li class="breadcrumb-item active" aria-current="page">Items</li>
+    <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
+    <li class="breadcrumb-item"><a href=""></a></li>
+    <li class="breadcrumb-item"><a href="{{route('show.category',[$product->category['id']])}}">{{$product->category->name}}</a></li>
+    <li class="breadcrumb-item active" aria-current="page">{{$product->name}}</li>
 </ol> 
 </nav>
 
@@ -165,7 +165,9 @@ Contacts
   <dd class="col-sm-9">{{$product->code}}</dd>
 
   <dt class="col-sm-3">Color</dt>
-  <dd class="col-sm-9">Black and white </dd>
+  
+  <dd class="col-sm-9">Red</dd>
+  
 </dl>
 <div class="rating-wrap">
 
@@ -271,67 +273,70 @@ Contacts
 <!-- PRODUCT DETAIL .// -->
 
 </div> <!-- col // -->
-<aside class="col-xl-2 col-md-3 col-sm-12">
-<div class="card">
-	<div class="card-header">
-	    Trade Assurance
-	</div>
-	<div class="card-body small">
-		 <span>China | Trading Company</span> 
-		 <hr>
-		 Transaction Level: Good <br> 
-		 Supplier Assessments: Best 
-		 <hr>
-		 11 Transactions $330,000+
-		 <hr>
-		 Response Time 24h <br>
-		 Response Rate: 94%  <br> 
-		 <hr>
-		 <a href="">Visit pofile</a>
-		 
-	</div> <!-- card-body.// -->
-</div> <!-- card.// -->
-<div class="card mt-3">
-	<div class="card-header">
-	    You may like
-	</div>
-	<div class="card-body row">
-<div class="col-md-12 col-sm-3">
-	<figure class="item border-bottom mb-3">
-			<a href="#" class="img-wrap"> <img src="images/items/2.jpg" class="img-md"></a>
-			<figcaption class="info-wrap">
-				<a href="#" class="title">The name of product</a>
-				<div class="price-wrap mb-3">
-					<span class="price-new">$280</span> <del class="price-old">$280</del>
-				</div> <!-- price-wrap.// -->
-			</figcaption>
-	</figure> <!-- card-product // -->
-</div> <!-- col.// -->
-<div class="col-md-12 col-sm-3">
-<figure class="item border-bottom mb-3">
-		<a class="img-wrap"> <img src="images/items/3.jpg" class="img-md"></a>
-		<figcaption class="info-wrap">
-			<a href="#" href="#" class="title">The name of product</a>
-			<div class="price-wrap mb-3">
-				<span class="price-new">$280</span>
-			</div> <!-- price-wrap.// -->
-		</figcaption>
-</figure> <!-- card-product // -->
-</div> <!-- col.// -->
-<div class="col-md-12 col-sm-3">
-<figure class="item border-bottom mb-3">
-		<a href="#" class="img-wrap"> <img src="images/items/4.jpg" class="img-md"></a>
-		<figcaption class="info-wrap">
-			<a href="#" class="title">The name of product</a>
-			<div class="price-wrap mb-3">
-				<span class="price-new">$280</span>
-			</div> <!-- price-wrap.// -->
-		</figcaption>
-</figure> <!-- card-product // -->
-</div> <!-- col.// -->
-	</div> <!-- card-body.// -->
-</div> <!-- card.// -->
-</aside> <!-- col // -->
+<aside class="col-xl-2 col-lg-2 col-md-3 col-sm-12">  
+        <div class="card">
+            <div class="card-header">
+                You may like
+            </div>
+            <div class="card-body row">
+                <div class="col-md-12 col-sm-3">
+                    <figure class="item border-bottom mb-3">
+                            <a href="kitchen3.html" class="img-wrap"> <img src="../images/items/kitchen/kitchen12.jpg" class="img-md"></a>
+                            <figcaption class="info-wrap">
+                                <a href="" class="title text-dark ml-2">Future</a>
+                                <div class="price-wrap mb-3">
+                                    <span class="price-new text-danger ml-2">$550</span> <del class="price-old text-primary">$780</del>
+                                </div> <!-- price-wrap.// -->
+                            </figcaption>
+                    </figure> <!-- card-product // -->
+                </div> <!-- col.// -->
+                <div class="col-md-12 col-sm-3">
+                <figure class="item border-bottom mb-3">
+                        <a href="kitchen12.html"class="img-wrap"> <img src="../images/items/kitchen/kitchen11.jpg" class="img-md"></a>
+                        <figcaption class="info-wrap">
+                            <a href="#" class="title text-dark ml-2">Sofy</a>
+                            <div class="price-wrap mb-3">
+                                <span class="price-new text-primary ml-2">$280</span>
+                            </div> <!-- price-wrap.// -->
+                        </figcaption>
+                </figure> <!-- card-product // -->
+                </div> <!-- col.// -->
+        <div class="col-md-12 col-sm-3">
+            <figure class="item border-bottom mb-3">
+                    <a href="kitchen2.html" class="img-wrap"> <img src="../images/items/kitchen/kitchen2.jpg" class="img-md"></a>
+                    <figcaption class="info-wrap">
+                        <a href="#" class="title text-dark ml-2">Rustic</a>
+                        <div class="price-wrap mb-3">
+                            <span class="price-new text-danger ml-2">$550</span> <del class="price-old text-primary">$780</del>
+                        </div> <!-- price-wrap.// -->
+                    </figcaption>
+            </figure> <!-- card-product // -->
+        </div> <!-- col.// -->
+        <div class="col-md-12 col-sm-3">
+        <figure class="item border-bottom mb-3">
+                <a href="kitchen4.html" class="img-wrap"> <img src="../images/items/kitchen/kitchen3.jpg" class="img-md"></a>
+                <figcaption class="info-wrap">
+                    <a href="#" class="title text-dark ml-2">Sonny</a>
+                    <div class="price-wrap mb-3">
+                        <span class="price-new text-primary ml-2">$280</span>
+                    </div> <!-- price-wrap.// -->
+                </figcaption>
+        </figure> <!-- card-product // -->
+        </div> <!-- col.// -->
+        <div class="col-md-12 col-sm-3">
+        <figure class="item border-bottom mb-3">
+                <a href="kitchen10.html" class="img-wrap"> <img src="../images/items/kitchen/kitchen9.jpg" class="img-md"></a>
+                <figcaption class="info-wrap">
+                    <a href="#" class="title text-dark ml-2">Katy</a>
+                    <div class="price-wrap mb-3">
+                        <span class="price-new text-primary ml-2">$280</span>
+                    </div> <!-- price-wrap.// -->
+                </figcaption>
+        </figure> <!-- card-product // -->
+        </div> <!-- col.// -->
+            </div> <!-- card-body.// -->
+        </div> <!-- card.// -->
+        </aside> <!-- col // -->
 </div> <!-- row.// -->
 
 
