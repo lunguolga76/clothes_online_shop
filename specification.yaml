@@ -15,9 +15,7 @@ externalDocs:
   description: Find out more about Swagger
   url: http://swagger.io
 servers:
-  - url: https://localhost:8080/api
-  - url: https://production.com/api
-  - url: https://testing.server.com/api
+  - url: http://localhost:880/api
 tags:
   - name: products
     description: Everything about our Products
@@ -36,25 +34,6 @@ tags:
       description: Find out more about our store
       url: http://swagger.io
 paths:
-  /products:
-    get:
-      tags:
-        - products
-      summary: Read the list of all the products
-      description: Returns the list of all the products
-      responses:
-        200:
-          description: successful operation
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Product'
-        400:
-          description: Invalid status value
-          content: { }
-
   /products/{productId}:
     get:
       tags:
@@ -63,6 +42,13 @@ paths:
       description: Returns detailed list of the product
       parameters:
         - $ref: '#/components/parameters/productId'
+#      requestBody:
+#        description: Pet object that needs to be added to the store
+#        content:
+#          application/json:
+#            schema:
+#              $ref: '#/components/schemas/Product'
+#        required: true
       responses:
         200:
           description: successful operation
@@ -104,6 +90,27 @@ paths:
         400:
           description: Invalid status value
           content: { }
+
+
+  /products:
+    get:
+      tags:
+        - products
+      summary: Read the list of all the products
+      description: Returns the list of all the products
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Product'
+        400:
+          description: Invalid status value
+          content: { }
+
 
   /products/{productId}/reviews:
    get:
