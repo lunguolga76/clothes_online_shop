@@ -15,7 +15,7 @@ class RequestLoggingMiddleware
     }
 public  function  handle(Request $request,\Closure $next)
 {
-    $this->logger->logRequest($request);
+//    $this->logger->logRequest($request);
 
     return $next($request);
 }

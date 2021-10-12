@@ -13,6 +13,10 @@ use  App\Services\Logging\ViewLogger;
 
 class BlogController extends Controller
 {
+    public function read()
+    {
+        return 'some string';
+    }
 
     public function index (Request $request, ArticleFilter $filters)
     {

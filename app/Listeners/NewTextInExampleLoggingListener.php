@@ -12,13 +12,15 @@ class NewTextInExampleLoggingListener
     /**
      * @param LoggerInterface $logger
      */
-    public function __construct(LoggerInterface $logger)
+    public function __construct(
+//        LoggerInterface $logger
+    )
     {
-        $this->logger = $logger;
+//        $this->logger = $logger;
     }
 
     public  function handle(NewTextInExample $event):void
 {
- $this->logger->$event;
+// $this->logger->$event;
 }
 }

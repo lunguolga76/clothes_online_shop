@@ -18,9 +18,11 @@ class LogViewListener
      *
      * @return void
      */
-    public function __construct(LoggerInterface $logger)
+    public function __construct(
+//        LoggerInterface $logger
+    )
     {
-        $this->logger = $logger;
+//        $this->logger = $logger;
 
     }
 
@@ -33,9 +35,9 @@ class LogViewListener
      */
     public function handle(LogView $event, $loggable)
     {
-        $this->logger =info($loggable->toString(),
-            $loggable->toArray(),
-        );
+//        $this->logger =info($loggable->toString(),
+//            $loggable->toArray(),
+//        );
 
 
 

@@ -24,7 +24,7 @@ use App\Http\Controllers\ManufacturerController;
 |
 */
 
- 
+
 //Route::get('/', 'IndexController::class, index')->name('home');
 /*Route::get('/', function() {
     return view('front.homepage');
