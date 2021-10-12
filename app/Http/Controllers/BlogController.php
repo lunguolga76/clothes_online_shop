@@ -2,20 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Filters\ArticleFilter;
+use App\Listeners\LogViewListener;
 use Illuminate\Http\Request;
 use  App\Models\Blog\Article;
 use  App\Models\Blog\Comment;
 use  App\Models\Blog\Author;
+use  App\Services\Logging\ViewLogger;
 
 
 class BlogController extends Controller
 {
 
-    public function index (Request $request)
+    public function index (Request $request, ArticleFilter $filters)
     {
-        $articles=Article::with(['author','blog_category']);
+       /* $articles=Article::with(['author','blog_category']);
 
-        if($request->has('title')){
+       if($request->has('title')){
 
             $articles->where('title','like', "%$request->title%" );
         }
@@ -35,32 +38,33 @@ class BlogController extends Controller
         if($request->has('created_at') && in_array($request->created_at, ['created_at_desc', 'created_at_asc'])){
 
             if ($request->created_at == 'created_at_desc') {
-                $articles->orderBy('created_at','desc');
+                $articles->orderByDesc('created_at');
 
             } else {
-               $articles->orderBy('created_at','asc');
+               $articles->orderBy('created_at');
             }
 
         }
 
+        $articles=$articles->paginate(10);   */
 
-        $articles=$articles->paginate(10);
 
-
-       // $articles=Article::filter($filters)->orderBy('published_at','desc')->paginate(10);
+        $articles=Article::with(['author','blog_category'])->filter($filters)->paginate(10);
 
         return view ('front.blog-list',compact('articles'));
-      
+
     }
 
 
-    public function show(int $articleId, ViewLogger $viewLogger){
+    public function show($article){
 
-        $article=Article::with('comments')->findOrFail($articleId);
+        $article=Article::with('comments')->findOrFail($article);
         //dd(Article::all());
         $article->views +=1;
         $article->update();
-        $viewLogger->logView($article);
+        event(new LogViewListener($article));
+        //dd($article);
+
 
 
         return view ('front.blog-article', compact('article'));

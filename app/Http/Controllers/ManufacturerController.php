@@ -22,12 +22,12 @@ class ManufacturerController extends Controller
             'active'=>true
         ]);
         $manufacturerthree=Manufacturer::create([
-            
+
         ]);
        // dd($manufacturer->toArray());
         //dd($manufacturertwo->toArray());
        return redirect('manufacturer/' .$manufacturer->id . '/view');
-        
+
     }
 
     public function view (int $id, ViewLogger $viewLogger)
@@ -35,7 +35,7 @@ class ManufacturerController extends Controller
         $manufacturer= Manufacturer::findOrFail($id);
         $viewLogger->logView($manufacturer);
 
-        dd($manufacturer->toArray());
+       // dd($manufacturer->toArray());
 
     }
 }
