@@ -1,0 +1,897 @@
+openapi: 3.0.1
+info:
+  title: Olga Online Clothes
+  description: 'This is a sample server Petstore server.  You can find out more about
+    Swagger at [http://swagger.io](http://swagger.io) or on [irc.freenode.net, #swagger](http://swagger.io/irc/).  For
+    this sample, you can use the api key `special-key` to test the authorization filters.'
+  termsOfService: http://swagger.io/terms/
+  contact:
+    email: apiteam@swagger.io
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.5
+externalDocs:
+  description: Find out more about Swagger
+  url: http://swagger.io
+servers:
+  - url: http://localhost:880/api
+tags:
+  - name: products
+    description: Everything about our Products
+    externalDocs:
+      description: Find out more
+      url: http://swagger.io
+  - name: orders
+    description: Operations about orders
+  - name: users
+    description: Operations about users
+  - name: articles
+    description: Everything about our Blog
+  - name: info
+    description: Everything about our Company
+    externalDocs:
+      description: Find out more about our store
+      url: http://swagger.io
+paths:
+  /products/{productId}:
+    get:
+      tags:
+        - products
+      summary: Reads info about one product
+      description: Returns detailed list of the product
+      parameters:
+        - $ref: '#/components/parameters/productId'
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DetailedProduct'
+        400:
+          description: Invalid status value
+          content: { }
+    delete:
+      tags:
+        - products
+      summary: Delete the product by id
+      description: Delete the product by id
+      parameters:
+        - name: productId
+          in: path
+          description: ID of the product that needs to be deleted
+          required: true
+          schema:
+            minimum: 1
+            type: integer
+            format: int64
+      responses:
+        400:
+          description: Invalid ID supplied
+          content: { }
+        404:
+          description: Product not found
+          content: { }
+
+
+    put:
+      tags:
+        - products
+      summary: Modifies/Updates one product
+      description: Modifies/Updates one product
+      parameters:
+        - $ref: '#/components/parameters/productId'
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DetailedProduct'
+        400:
+          description: Invalid status value
+          content: { }
+
+
+  /products:
+    get:
+      tags:
+        - products
+      summary: Read the list of all the products
+      description: Returns the list of all the products
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Product'
+        400:
+          description: Invalid status value
+          content: { }
+
+
+  /products/{productId}/reviews:
+    get:
+      tags:
+        - products
+      summary: Reads list of reviews per products
+      description: Returns list of reviews per products
+      parameters:
+        - $ref: '#/components/parameters/productId'
+
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+
+        400:
+          description: Invalid status value
+          content: { }
+
+  /products/{productId}/search:
+    get:
+      tags:
+        - products
+      summary: Finds Products by tags
+      operationId: getProducts
+      parameters:
+        - $ref: '#/components/parameters/productId'
+
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Product'
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Product'
+        400:
+          description: Invalid tag value
+          content: { }
+
+  /orders:
+    get:
+      tags:
+        - orders
+      summary: Read the list of all the orders
+      description: Returns the list of all the orders
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Order'
+        400:
+          description: Invalid status value
+          content: { }
+    post:
+      tags:
+        - orders
+      summary: Creates a new order.
+      description: Creates a new order.
+      requestBody:
+        description: Order object that needs to be added to the orders
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Order'
+        required: true
+      responses:
+        '201':
+          description: Created
+          content: { }
+  /orders/{orderId}:
+    get:
+      tags:
+        - orders
+      summary: Reads info about one order
+      description: Reads info about one order
+      parameters:
+        - $ref: '#/components/parameters/orderId'
+      responses:
+        200:
+          description: ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DetailedOrder'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Order'
+        400:
+          description: Invalid ID supplied
+          content: {}
+        404:
+          description: Order not found
+          content: {}
+    delete:
+      tags:
+        - orders
+      summary: Delete purchase order by ID
+      description: For valid response try integer IDs with positive integer value.
+        Negative or non-integer values will generate API errors
+      operationId: deleteOrder
+      parameters:
+        - name: orderId
+          in: path
+          description: ID of the order that needs to be deleted
+          required: true
+          schema:
+            minimum: 1
+            type: integer
+            format: int64
+      responses:
+        400:
+          description: Invalid ID supplied
+          content: { }
+        404:
+          description: Order not found
+          content: { }
+  /orders/{orderId}/status:
+    get:
+      tags:
+        - orders
+      summary: Reads the status of order
+      parameters:
+        - $ref: '#/components/parameters/orderId'
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Order'
+
+        400:
+          description: Invalid status value
+          content: { }
+      security:
+        - petstore_auth:
+            - write:product
+            - read:product
+  /orders/{orderId}/items/{productId}/quantity/decrement:
+    patch:
+      tags:
+        - orders
+      summary: Modify the quantity of the products in the cart
+      parameters:
+        - $ref: '#/components/parameters/orderId'
+        - $ref: '#/components/parameters/productId'
+      responses:
+        200:
+          description: successful operation
+        400:
+          description: Invalid status value
+          content: { }
+
+  /orders/{orderId}/items/{productId}/quantity/increment:
+    patch:
+      tags:
+        - orders
+      summary: Modify the quantity of the products in the cart
+      parameters:
+        - $ref: '#/components/parameters/orderId'
+        - $ref: '#/components/parameters/productId'
+      responses:
+        200:
+          description: successful operation
+#        400:
+#          description: Invalid status value
+#          content: { }
+
+  /orders/{orderId}/items/{productId}/quantity:
+    patch:
+      tags:
+        - orders
+      summary: Modify the quantity of the products in the cart
+      parameters:
+        - $ref: '#/components/parameters/orderId'
+        - $ref: '#/components/parameters/productId'
+      responses:
+        200:
+          description: successful operation
+        400:
+          description: Invalid status value
+          content: { }
+  /orders/{orderId}/deliveries:
+    get:
+      tags:
+        - orders
+      summary: Read the list of available delivery companies
+      description: Returns the list of available delivery companies
+      parameters:
+        - $ref: '#/components/parameters/orderId'
+        - $ref: '#/components/parameters/productId'
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                items:
+                  $ref: '#/components/schemas/Order'
+        400:
+          description: Invalid status value
+          content: { }
+  /orders/{orderId}/deliveries/{optionId}:
+    patch:
+      tags:
+        - orders
+      summary: Places delivery option to created order
+      parameters:
+        - $ref: '#/components/parameters/orderId'
+        - $ref: '#/components/parameters/optionId'
+      description: Pet object that needs to be added to the store
+      responses:
+        200:
+          description: successful operation
+        400:
+          description: Invalid status value
+          content: { }
+
+  /users:
+    get:
+      tags:
+        - users
+      summary: Reads list of all system user
+      responses:
+        200:
+          description: A list of users.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+        400:
+          description: Invalid status value
+          content: { }
+    post:
+      tags:
+        - users
+      summary: Create user
+      requestBody:
+        content:
+          application/json: # Media type
+            schema: # Request body contents
+              $ref: '#/components/schemas/User'   # Reference to an object
+            examples: # Child of media type
+              Jessica: # Example 1
+                value:
+                  id: 10
+                  name: Jessica Smith
+              Ron: # Example 2
+                value:
+                  id: 11
+                  name: Ron Stewart
+      responses:
+        '201':
+          description: Created
+
+  /users/login:
+    post:
+      tags:
+        - users
+      summary: Login registered user
+      parameters:
+        - name: username
+          in: query
+          description: The user name for login
+          required: true
+          schema:
+            type: string
+        - name: password
+          in: query
+          description: The password for login in clear text
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: successful operation
+          headers:
+            X-Rate-Limit:
+              description: calls per hour allowed by the user
+              schema:
+                type: integer
+                format: int32
+            X-Expires-After:
+              description: date in UTC when token expires
+              schema:
+                type: string
+                format: date-time
+          content:
+            application/json:
+              schema:
+                type: string
+            application/xml:
+              schema:
+                type: string
+        400:
+          description: Invalid username/password supplied
+          content: {}
+  /users/logout:
+    get:
+      tags:
+        - users
+      summary: Logout user from system
+      responses:
+        default:
+          description: successful operation
+          content: {}
+  /users/{userId}:
+    get:
+      tags:
+        - users
+      summary: Reads the "account" of one user
+      parameters:
+        - $ref: '#/components/parameters/userId'
+      responses:
+        200:
+          description: A single user.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        400:
+          description: Invalid username supplied
+          content: { }
+        404:
+          description: User not found
+          content: { }
+  /users/{userId}/orders:
+    get:
+      tags:
+        - users
+      summary: Reads the list orders of the user
+      parameters:
+        - $ref: '#/components/parameters/userId'
+        - $ref: '#/components/parameters/orderId'
+      responses:
+        200:
+          description: successful operation
+        400:
+          description: Invalid status value
+          content: { }
+  /users/{userId}/orders/{orderId}:
+    get:
+      tags:
+        - users
+      summary: Reads the order details of the user
+      parameters:
+        - $ref: '#/components/parameters/userId'
+        - $ref: '#/components/parameters/orderId'
+      responses:
+        200:
+          description: successful operation
+        400:
+          description: Invalid status value
+          content: { }
+  /articles:
+    get:
+      tags:
+        - articles
+      summary: Read the list of all the articles
+      description: Returns the list of all articles
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Article'
+        400:
+          description: Invalid status value
+          content: { }
+
+  /articles/{articleId}:
+    get:
+      tags:
+        - articles
+      summary: Reads info about one article
+      description: Returns detailed list of one article
+      parameters:
+        - $ref: '#/components/parameters/articleId'
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DetailedArticle'
+        400:
+          description: Invalid status value
+          content: { }
+  /our/goals:
+    get:
+      tags:
+        - info
+      summary: Accessing the page about-us
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Info'
+        400:
+          description: Invalid status value
+          content: { }
+  /our/contacts:
+    get:
+      tags:
+        - info
+      summary: Accessing the contact-us page
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Info'
+        400:
+          description: Invalid status value
+          content: { }
+    post:
+      tags:
+        - info
+      summary: Sending the mail from contact-us page
+      requestBody:
+        description: Mail contact-us object that needs to be send
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Info'
+        requiredexit: true
+      responses:
+        '201':
+          description: Sent
+          content: { }
+components:
+  parameters:
+    productId:
+      name: productId
+      in: path
+      description: Id of the product
+      required: true
+      schema:
+        type: integer
+        format: int64
+        example: 8523
+    userId:
+      name: userId
+      in: path
+      description: User id
+      required: true
+      schema:
+        type: integer
+        format: int64
+        example: 8523
+    orderId:
+      name: orderId
+      in: path
+      description: Id of the order
+      required: true
+      schema:
+        type: integer
+        format: int64
+        example: 242
+    articleId:
+      name: articleId
+      in: path
+      description: Id of the article
+      required: true
+      schema:
+        type: integer
+        format: int64
+        example: 5862
+    optionId:
+      name: optionId
+      in: path
+      description: Id of the option
+      required: true
+      schema:
+        type: integer
+        format: int64
+        example: 2
+  schemas:
+    ApiResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+          format: int32
+        type:
+          type: string
+        message:
+          type: string
+    Category:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+
+    Product:
+      required:
+        - name
+      type: object
+      properties:
+        id:
+          type: integer
+        category:
+          $ref: '#/components/schemas/ProductCategoryString'
+        name:
+          type: string
+          example: T-shirt for men
+
+    DetailedProduct:
+      required:
+        - id
+        - name
+      type: object
+      properties:
+        id:
+          type: integer
+        category:
+          $ref: '#/components/schemas/ProductCategoryString'
+        categoryExpanded:
+          $ref: '#/components/schemas/ProductCategoryObject'
+        name:
+          type: string
+          example: T-shirt for men
+        description:
+          type: string
+          example: Men t-shits of various sizes
+        availableSize:
+          type: string
+          description: 'Example of size - S, M, L, XL, XXL, XXXL'
+          example: XL
+        tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/Tag'
+        status:
+          type: string
+          description: product status in the online-shop
+          enum:
+            - available
+            - pending
+            - sold
+
+    ProductCategoryObject:
+      type: object
+      properties:
+        name:
+          $ref: '#/components/schemas/ProductCategoryString'
+        description:
+          type: string
+          description: Description of Product category name or ID
+          example: Products for men clothes
+
+    ProductCategoryString:
+      type: string
+      description: Product category name
+      enum:
+        - sportswear
+        - kids
+        - men
+        - woman
+        - casual
+        - formal
+        - evening
+        - t-shirts
+        - polos
+        - jeans
+        - coats
+        - jackets
+        - dresses
+        - trousers
+        - joggers
+        - shorts
+
+    Tag:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+
+    Order:
+      required:
+        - id
+        - orderDate
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 78
+        total_price:
+          type: integer
+        orderDate:
+          type: string
+          format: date-time
+          example: 11 may 2021
+        status:
+          type: string
+          description: Order Status
+          enum:
+            - placed
+            - approved
+            - delivered
+
+    DetailedOrder:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        product:
+          $ref: '#/components/schemas/Product'
+        unit_price:
+          type: integer
+        quantity:
+          type: integer
+          format: int32
+          example: 2
+        shipDate:
+          type: string
+          format: date-time
+          example: 15 may 2021
+        complete:
+          type: boolean
+
+    Info:
+      type: object
+      properties:
+        name:
+          type: string
+        email:
+          type: string
+        subject:
+          type: string
+        department:
+          type: string
+          description: Select Department
+          enum:
+            - Administration
+            - Accounting
+            - Tehnical Department
+            - Logistic
+        message:
+          type: string
+        readTerms:
+          type: boolean
+
+    BlogCategory:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+
+    Article:
+      required:
+        - name
+      type: object
+      properties:
+        id:
+          type: integer
+        blog_category:
+          $ref: '#/components/schemas/ArticleBlogCategoryString'
+        name:
+          type: string
+          example: The last party
+
+    DetailedArticle:
+      required:
+        - id
+        - name
+      type: object
+      properties:
+        id:
+          type: integer
+        blog_category:
+          $ref: '#/components/schemas/ArticleBlogCategoryString'
+        blog_categoryExpanded:
+          $ref: '#/components/schemas/ArticleBlogCategoryObject'
+        name:
+          type: string
+          example: The last news in economics
+        description:
+          type: string
+          example: All about economics
+
+
+    ArticleBlogCategoryObject:
+      type: object
+      properties:
+        name:
+          $ref: '#/components/schemas/ArticleBlogCategoryString'
+        description:
+          type: string
+          description: Description of Article category name or ID
+          example: All about blog category
+
+    ArticleBlogCategoryString:
+      type: string
+      description: Article category name
+      enum:
+        - travel
+        - politic
+        - social
+        - sport
+        - economic
+
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 352
+        username:
+          type: string
+          example: lacky23
+        firstName:
+          type: string
+          example: Ivan
+        lastName:
+          type: string
+          example: Noe
+        email:
+          type: string
+          example: ivannoe@gmail.com
+        password:
+          type: string
+          example: Lucky786
+        phone:
+          type: string
+          example: 003932536523
+
+
+  securitySchemes:
+    api_key:
+      type: apiKey
+      name: api_key
+      in: header
+    petstore_auth:
+      type: oauth2
+      flows:
+        implicit:
+          authorizationUrl: https://petstore.swagger.io/oauth/authorize
+          scopes:
+            read:pets: read your pets
+            write:pets: modify pets in your account
