@@ -23,14 +23,14 @@ class RequestResponseLoggingMiddleware
     }
     public function terminate($request, $response)
     {
-        if (!$response->exception) {
-            Log::info(
-                'Processed a request and tried to deliver a response',
-                [
-                    'request' => ['accessedUrl' => $request->getUri(), 'routeUri' => $request->getRequestUri()],
-                    'response' => ['viewFile' => $response->original->getPath(), 'responseData' => $response->original->getData()]
-                ]
-            );
-        }
+//        if (!$response->exception) {
+//            Log::info(
+//                'Processed a request and tried to deliver a response',
+//                [
+//                    'request' => ['accessedUrl' => $request->getUri(), 'routeUri' => $request->getRequestUri()],
+//                    'response' => ['viewFile' => $response->original->getPath(), 'responseData' => $response->original->getData()]
+//                ]
+//            );
+//        }
     }
 }

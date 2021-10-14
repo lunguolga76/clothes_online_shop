@@ -18,9 +18,9 @@ Contacts
 			<a class="dropdown-item" href="#">Auto / Transportation</a>
 			<a class="dropdown-item" href="#">Apparel / Textiles / Timepieces </a>
 			<a class="dropdown-item" href="#">Home & Garden / Construction / Lights </a>
-			<a class="dropdown-item" href="#">Beauty & Personal Care / Health </a> 
+			<a class="dropdown-item" href="#">Beauty & Personal Care / Health </a>
 		</div>
-	</div> 
+	</div>
 	</div>
 	<div class="col-lg-11-24 col-sm-8">
 			<form action="#" class="py-1">
@@ -34,7 +34,7 @@ Contacts
 				    <input type="text" class="form-control" style="width:50%;" placeholder="Search">
 				    <div class="input-group-append">
 				      <button class="btn btn-warning" type="submit">
-				        <i class="fa fa-search"></i> Search 
+				        <i class="fa fa-search"></i> Search
 				      </button>
 				    </div>
 			    </div>
@@ -76,7 +76,7 @@ Contacts
 					<div class="icontext">
 						<div class="icon-wrap"><i class="text-warning icon-sm fa fa-shopping-cart"></i></div>
 						<div class="text-wrap text-dark">
-							Order <br> Protection 
+							Order <br> Protection
 						</div>
 					</div>
 				</a>
@@ -109,7 +109,7 @@ Contacts
 			<a class="dropdown-item" href="#">Russian </a>
 			<a class="dropdown-item" href="#">Arabic </a>
 		</div>
-	</div> 
+	</div>
 </div> <!-- container.// -->
 </section>
 <!-- ========================= SECTION TOPBAR .// ========================= -->
@@ -123,7 +123,7 @@ Contacts
     <li class="breadcrumb-item"><a href="#">Category name</a></li>
     <li class="breadcrumb-item"><a href="#">Sub category</a></li>
     <li class="breadcrumb-item active" aria-current="page">Items</li>
-</ol> 
+</ol>
 </nav>
 
 <div class="row">
@@ -133,7 +133,7 @@ Contacts
 <main class="card">
 	<div class="row no-gutters">
 		<aside class="col-sm-6 border-right">
-<article class="gallery-wrap"> 
+<article class="gallery-wrap">
 <div class="img-big-wrap">
   <div> <a href="images/items/1.jpg" data-fancybox=""><img src="images/items/1.jpg"></a></div>
 </div> <!-- slider-product.// -->
@@ -149,11 +149,14 @@ Contacts
 <article class="card-body">
 <!-- short-info-wrap -->
 	<h3 class="title mb-3">{{$product->name}}</h3>
+    <pre>
+        {{ $product }}
+    </pre>
 
-<div class="mb-3"> 
-	<var class="price h3 text-warning"> 
+<div class="mb-3">
+	<var class="price h3 text-warning">
 		<span class="currency">$ </span><span class="num">{{$product->unit_price}}</span>
-	</var> 
+	</var>
 
 </div> <!-- price-detail-wrap .// -->
 <dl>
@@ -170,15 +173,15 @@ Contacts
 <div class="rating-wrap">
 
 	<ul class="rating-stars">
-		<li style="width:80%" class="stars-active"> 
-			<i class="fa fa-star"></i> <i class="fa fa-star"></i> 
-			<i class="fa fa-star"></i> <i class="fa fa-star"></i> 
-			<i class="fa fa-star"></i> 
+		<li style="width:80%" class="stars-active">
+			<i class="fa fa-star"></i> <i class="fa fa-star"></i>
+			<i class="fa fa-star"></i> <i class="fa fa-star"></i>
+			<i class="fa fa-star"></i>
 		</li>
 		<li>
-			<i class="fa fa-star"></i> <i class="fa fa-star"></i> 
-			<i class="fa fa-star"></i> <i class="fa fa-star"></i> 
-			<i class="fa fa-star"></i> 
+			<i class="fa fa-star"></i> <i class="fa fa-star"></i>
+			<i class="fa fa-star"></i> <i class="fa fa-star"></i>
+			<i class="fa fa-star"></i>
 		</li>
 	</ul>
 	<div class="label-rating">132 reviews</div>
@@ -189,7 +192,7 @@ Contacts
 		<div class="col-sm-5">
 			<dl class="dlist-inline">
 			  <dt>Quantity: </dt>
-			  <dd> 
+			  <dd>
 			  	<select class="form-control form-control-sm" style="width:70px;">
 			  		<option> 1 </option>
 			  		<option> 2 </option>
@@ -228,7 +231,7 @@ Contacts
 	</div> <!-- row.// -->
 	<hr>
 	<a href="#" class="btn  btn-warning"> <i class="fas fa-shopping-bag"></i> Add to bag </a>
-	
+
 <!-- short-info-wrap .// -->
 </article> <!-- card-body.// -->
 		</aside> <!-- col.// -->
@@ -277,18 +280,18 @@ Contacts
 	    Trade Assurance
 	</div>
 	<div class="card-body small">
-		 <span>China | Trading Company</span> 
+		 <span>China | Trading Company</span>
 		 <hr>
-		 Transaction Level: Good <br> 
-		 Supplier Assessments: Best 
+		 Transaction Level: Good <br>
+		 Supplier Assessments: Best
 		 <hr>
 		 11 Transactions $330,000+
 		 <hr>
 		 Response Time 24h <br>
-		 Response Rate: 94%  <br> 
+		 Response Rate: 94%  <br>
 		 <hr>
 		 <a href="">Visit pofile</a>
-		 
+
 	</div> <!-- card-body.// -->
 </div> <!-- card.// -->
 <div class="card mt-3">

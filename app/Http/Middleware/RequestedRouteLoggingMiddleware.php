@@ -17,14 +17,14 @@ class RequestedRouteLoggingMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-    Log::info(
-        'Receiving a request!',
-        [
-            'accessedUrl' => $request->getUri(), 'routeUri' => $request->getRequestUri(),
-            'inputData' => $request->isJson() ? $request->json()->all() : $request->input()
-        ]
-    );
-    
+//    Log::info(
+//        'Receiving a request!',
+//        [
+//            'accessedUrl' => $request->getUri(), 'routeUri' => $request->getRequestUri(),
+//            'inputData' => $request->isJson() ? $request->json()->all() : $request->input()
+//        ]
+//    );
+
         return $next($request);
     }
 }

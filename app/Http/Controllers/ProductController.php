@@ -11,20 +11,20 @@ class ProductController extends Controller
 {
     public function index ()
     {
-        $products=Product::paginate(12);
+        $products = Product::paginate(12);
           //dd($products->all());
-        return view ('front.products',compact('products'));  
-    } 
+        return view ('front.products',compact('products'));
+    }
 
     public function show(int $productId,  ViewLogger $viewLogger){
        // dd(Article::all());
-        $product=Product::findOrFail($productId);
+        $product = Product::findOrFail($productId);
         $viewLogger->logView($product);
-        
-      
+
+
         return view ('front.product-details', compact('product'));
 
-        }
-   
+    }
+
 
 }

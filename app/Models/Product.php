@@ -9,7 +9,7 @@ use App\Models\LoggableInterface;
 class Product extends Model implements LoggableInterface
 {
     use HasFactory;
-    
+
     protected $fillable = ['category_id', 'name','code','description','quantity','unit_price'];
 
     public function getImageProductUrlAttribute()
@@ -30,21 +30,18 @@ class Product extends Model implements LoggableInterface
         return $this->hasMany(ProductReviews::class);
     }
     public function orderDetails(){
-    return $this->hasMany(OrderDetails::class);  
+    return $this->hasMany(OrderDetails::class);
 }
     public function tags(){
     return $this->belongsToMany(Tag::class);
-}   
+}
     public function toArray():array
     {
         return parent::toArray();
     }
-    
+
     public function toString():string
     {
         return 'Product with '. $this->id;
     }
-
-
-
 }
