@@ -16,6 +16,31 @@ Homepage
 </div>
 </div>
 </section>
+<div class="container">
+	<div class="row">
+	<div class="col-xl-12 col-md-6 col-sm-12">
+	<div class="owl-carousel owl-theme">
+    <div class="item"><h4><img src="../images/blog-article/man.jpg"></h4></div>
+    <div class="item"><h4>2</h4></div>
+    <div class="item"><h4>3</h4></div>
+	</div>	
+</div>
+</div>
+<div class="py-5">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-3">
+					<div class="card">
+						<img src="/images/blog-article/man.jpg" alt="Product Image">
+						<div class="card-body">
+							<h5>Demo Product</h5>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 <!-- ========================= SECTION INTRO ========================= -->
 <section id="intro" class="section-intro pt-4">
 	<div class="container-fluid intro">
@@ -36,19 +61,48 @@ Homepage
     </div>
 	</a>
 	@endforeach
-  </div>
- 
-			
+  </div>	
 				
 				
 			</header>  <!-- intro-wrap .// -->
+			</div>
 		</div> <!-- col.// -->
 		</div> <!-- row.// -->
 	</div> <!-- container .//  -->
 	</section>
 	<!-- ========================= SECTION INTRO END// ========================= -->
+	
+	<!-- ============== owl slide items  ============= -->
 
+	
+   
+</div>	
 </div>
 </div>
 </div>
+@endsection
+
+@section('scripts')
+<script>
+jQuery(function($){	
+$('.owl-carousel').owlCarousel({
+    loop:true,
+    margin:10,
+    nav:true,
+    responsive:{
+        0:{
+            items:1
+        },
+        600:{
+            items:3
+        },
+        1000:{
+            items:5
+        }
+    }
+})
+});
+
+
+</script>
 @endsection

@@ -10,23 +10,27 @@ Blog-list
             <div class="col-3">
             <form action="{{ route('bloghome') }}" method="GET">
             <div class="form-group m-3">
-                <input type="text"class="form-controll text-secondary border border-secondary rounded"name="title" placeholder="select by title">
+                <input type="text"class="form-controll text-secondary border border-secondary rounded"name="title" value="{{request()->title}}" placeholder="select by title">
             </div>
             <div class="form-group m-3">
-                <input type="text"class="form-controll text-secondary border border-secondary rounded"name="category" placeholder="select by category">
+                <input type="text"class="form-controll text-secondary border border-secondary rounded"name="name" value="{{request()->name}}"placeholder="select category">
             </div>
+                <div class="form-group m-3">
+                    <input type="text"class="form-controll text-secondary border border-secondary rounded"name="first_name" value="{{request()->first_name}}"placeholder="select by author name">
+                </div>
             <div class="form-group m-3">
-            <select class="form-select text-secondary border border-secondary" aria-label="Default select example" name="sort" id="sort">
+            <select class="form-select text-secondary border border-secondary" aria-label="Default select example" name="created_at" id="created_at">
                 <option selected="" disabled="disabled" value="Select Department">Sort by date</option>
-                <option value="created_at">Newest</option>
-                 <option value="created_at">Latest</option>
+                <option value="created_at_desc"@if(request()->created_at=="created_at_desc")selected @endif>Newest</option>
+                <option value="created_at_asc"@if(request()->created_at=="created_at_asc")selected @endif>Latest</option>
+
                 </select>
                 </div>
                 <div  class="form-group m-3">
                <button type="submit" class="btn btn-warning">Filter</button>
             </div>
-               
-          
+
+
         </form>
         </div>
         </div>
@@ -67,9 +71,9 @@ Blog-list
                         <div class="row">
                             <div class="col-md-12">
                                 <nav aria-label="Page navigation">
-                                {{ $articles->links() }}
+                                    {{ $articles->links() }}
                                 </nav>
                             </div><!-- end col -->
-                        </div><!-- end row -->   
-                        </div><!-- end col --> 
+                        </div><!-- end row -->
+                        </div><!-- end col -->
 @endsection
