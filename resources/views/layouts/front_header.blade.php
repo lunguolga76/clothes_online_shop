@@ -1,37 +1,52 @@
+<div class="container-fluid">
+    <div class="row">
+<!--start-logo-->
+<div class="logo img-thumbnail rounded float-start">
+    <img src="/images/logo.png">
+</div>
+<!--start-logo-->
+<!--bottom-header-->
+<div class="header-bottom">
+    <div class="container">
+        <div class="header">
+            <div class="col-md-7 header-left">
+                <div class="top-nav">
+                    <ul class="memenu skyblue">
+                        <li class="active"><a href="/">Home</a></li>
+                        @foreach($sections as $section)
+                        <li class="grid text-capitalize"><a href="{{route('index.categories',[$section->name])}}">{{$section->name}}</a></li>
+                        @endforeach
+                        <li class="grid"><a href="{{route('bloghome')}}">Blog</a></li>
+                        <li class="grid"><a href="{{route('contactUs.show')}}">Contacts</a></li>
+                        <li class="grid"><a href="{{route('info.show')}}">About us</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+            <!--Search-->
+            <div class="col-md-3 header-right">
+                    <form class="form-input d-flex justify-content-start align-items-start" method="get" action="{{route('search')}}">
+                        <div class="input-group">
+                        <input name="s" class="form-control mr-sm-2 @error('s') is-invalid @enderror" type="text" placeholder="Search..." required>
+                            <button class="btn btn-outline-success" type="submit"><i class="fa fa-search"></i></button>
+                        </div>
+                    </form>
 
-<header class="header p-3 border-bottom bg-white">
-    <div class="container-fluid">
-      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-        <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
-          <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
-        </a>
-
-        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-		<li class="nav-item active"><a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a></li>
-        <li class="nav-item"><a class="nav-link" href="/category"> Man </a></li>
-        <li class="nav-item"><a class="nav-link" href="/category"> Woman </a></li>
-        <li class="nav-item"><a class="nav-link" href="/blog"> Blog</a></li>
-	 	<li class="nav-item"><a class="nav-link" href="/contacts"> Contacts</a></li>
-     <li class="nav-item"><a class="nav-link" href="/contacts"> About us</a></li>
-        </ul>
-
-        <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
-          <input type="search" id="header-search" class="form-control" placeholder="Search" aria-label="Search">
-        </form>
-        <div class="dropdown text-end">
-          <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-            <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
-          </a>
-          <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1" style="">
-            <li><a class="dropdown-item" href="#">New project...</a></li>
-            <li><a class="dropdown-item" href="#">Settings</a></li>
-            <li><a class="dropdown-item" href="#">Profile</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Sign out</a></li>
-          </ul>
-        </div>
-
-        
-      </div>
+            </div>
+            <!--Search End-->
+            <div class="col-md-2 header-right">
+                <div class="text-end">
+                    <button type="button" class="btn btn-outline-secondary me-2">Login</button>
+                    <button type="button" class="btn btn-warning">Sign-up</button>
+                </div>
+            </div>
     </div>
-  </header>
+</div>
+<!--bottom-header-->
+
+</div>
+</div>
+</div>
+
+

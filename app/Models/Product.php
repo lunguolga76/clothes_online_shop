@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Http\Filters\Filter;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\LoggableInterface;
@@ -12,10 +14,14 @@ class Product extends Model implements LoggableInterface
 
     protected $fillable = ['category_id', 'name','code','description','quantity','unit_price'];
 
-    public function getImageProductUrlAttribute()
-    {
-        return \Illuminate\Support\Facades\Storage::url($this->image);
+    public function scopeLike($query,$s){
 
+        return $query->where('name','LIKE',"%{$s}%");
+
+    }
+    public function scopeFilter(Builder $builder, Filter $filter): Builder
+    {
+        return $filter->apply($builder);
     }
 
     public function category(){

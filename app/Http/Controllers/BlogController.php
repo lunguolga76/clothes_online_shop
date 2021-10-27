@@ -17,7 +17,7 @@ class BlogController extends Controller
 
         $articles=Article::filter($filters)->orderBy('published_at','desc')->paginate(10);
 
-        return view ('front.blog-list',compact('articles'));
+        return view ('front.blog_articles.blog-list',compact('articles'));
       // return ArticleResource::collection($articles);
     }
 
@@ -31,7 +31,7 @@ class BlogController extends Controller
         $viewLogger->logView($article);
 
 
-        return view ('front.blog-article', compact('article'));
+        return view ('front.blog_articles.blog-article', compact('article'));
 
         }
 

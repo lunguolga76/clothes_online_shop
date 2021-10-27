@@ -14,17 +14,18 @@ class CreateProductDetailsTable extends Migration
     public function up()
     {
         Schema::create('product_details', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('product_id')  
-            ->constrained()
-            ->onUpdate('cascade')
-            ->onDelete('cascade');
+
+            $table->foreignId('product_id')->unsigned();
             $table->string('image_path');
             $table->tinyInteger('status');
             $table->string('color');
             $table->integer('weight');
             $table->string('fabric');
             $table->timestamps();
+
+            $table->foreign('product_id')->references('id')->on('products')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
 
         });
     }

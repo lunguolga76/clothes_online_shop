@@ -5,31 +5,32 @@ Blog-list
 @endsection
 
         @section('content')
-        <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
-        <div class="row">
-            <div class="col-3">
-            <form action="{{ route('bloghome') }}" method="GET">
-            <div class="form-group m-3">
-                <input type="text"class="form-controll text-secondary border border-secondary rounded"name="title" placeholder="select by title">
-            </div>
-            <div class="form-group m-3">
-                <input type="text"class="form-controll text-secondary border border-secondary rounded"name="category" placeholder="select by category">
-            </div>
-            <div class="form-group m-3">
-            <select class="form-select text-secondary border border-secondary" aria-label="Default select example" name="sort" id="sort">
-                <option selected="" disabled="disabled" value="Select Department">Sort by date</option>
-                <option value="created_at">Newest</option>
-                 <option value="created_at">Latest</option>
-                </select>
+            <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
+                <div class="row">
+                    <div class="col-lg-3">
+                        <form action="{{ route('bloghome') }}" method="GET">
+                            <div class="form-group d-inline w-15 m-2">
+                                <input type="text" class="form-control text-secondary border border-secondary rounded" name="title" value="{{request()->title}}" placeholder="select by title">
+                            </div>
+                            <div class="form-group d-inline w-15 m-2">
+                                <input type="text" class="form-control text-secondary border border-secondary rounded" name="name" value="{{request()->name}}" placeholder="select category">
+                            </div>
+                            <div class="form-group d-inline w-15 m-2">
+                                <input type="text" class="form-control text-secondary border border-secondary rounded" name="first_name" value="{{request()->first_name}}" placeholder="select by author name">
+                            </div>
+                            <div class="form-group d-inline w-15 m-2">
+                                <select class="form-select text-secondary border border-secondary" aria-label="Default select example" name="created_at" id="created_at">
+                                    <option selected="" disabled="disabled" value="Select Department">Sort by date</option>
+                                    <option value="created_at_desc" @if(request()->created_at=="created_at_desc")selected @endif>Newest</option>
+                                    <option value="created_at_asc" @if(request()->created_at=="created_at_asc")selected @endif>Latest</option>
+                                </select>
+                            </div>
+                            <div  class="form-group d-inline w-15 m-2">
+                                <button type="submit" class="btn btn-warning m-2">Filter</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
-                <div  class="form-group m-3">
-               <button type="submit" class="btn btn-warning">Filter</button>
-            </div>
-               
-          
-        </form>
-        </div>
-        </div>
                         <div class="page-wrapper">
                             <div class="blog-custom-build mt-1">
                                @foreach($articles as $article)
@@ -56,7 +57,7 @@ Blog-list
                                         <p class="fs-5 fw-bold">{{$article->description}}</p>
                                         <small><a href="marketing-single.html" title=""class="text-decoration-none">/ {{$article->blog_category->name}} /</a></small>
                                         <small><a href="#" title="" class="text-decoration-none">by {{$article->author->first_name}} /</a></small>
-                                        <small><a href="marketing-single.html" title=""class="text-decoration-none"> {{$article->getPublishedAtAttribute()}} /</a></small>
+                                        <small><a href="marketing-single.html" title="class="text-decoration-none>/ {{$article->getPublishedAtAttribute()}} /</a></small>
                                         <small><a href="#" title=""class="text-decoration-none"><i class="fa fa-eye"> {{$article->views}} </i></a></small>
                                     </div><!-- end meta -->
                                 </div><!-- end blog-box -->
@@ -70,6 +71,6 @@ Blog-list
                                 {{ $articles->links() }}
                                 </nav>
                             </div><!-- end col -->
-                        </div><!-- end row -->   
-                        </div><!-- end col --> 
+                        </div><!-- end row -->
+                        </div><!-- end col -->
 @endsection

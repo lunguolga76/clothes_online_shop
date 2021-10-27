@@ -628,7 +628,7 @@ figure.effect-bubba:hover p,figure.effect-bubba:hover h2 {
     color: #000;
     margin: 0;
     text-transform: uppercase;
-	font-family: 'BreeSerif-Regular';
+	font-family: 'BreeSerif-Regular', serif;
 }
 .product-bottom h4 span{
     font-size: 17px;
@@ -647,17 +647,7 @@ figure.effect-bubba:hover p,figure.effect-bubba:hover h2 {
 .product-left:hover .product-bottom h4 i{
 	background: url(../images/cart-3.png) no-repeat;
 }
-.product-bottom {
-    text-align: left;
-    margin-top: 20px;
-    padding-left: 30px;
-}
-.product-bottom p {
-	font-size: 12px;
-    color: #999;
-    margin: 5px 0 0 0;
-    text-transform: uppercase;
-}
+
 .product-one:nth-child(2){
 	margin-top:30px;
 }
@@ -3059,6 +3049,47 @@ ul.tag-men {
     line-height: 3em;
     font-size: 11px;
 }
+	.map-container-section {
+		overflow:hidden;
+		padding-bottom:56.25%;
+		position:relative;
+		height:0;
+	}
+	.map-container-section iframe {
+		left:0;
+		top:0;
+		height:100%;
+		width:100%;
+		position:absolute;
+	}
+
+	/* adaugate */
+	.md-form i {
+		background: grey;
+		padding: 10px;
+		border-radius: 4px;
+	}
+	.ic i {
+		background: grey;
+		padding: 15px;
+		border-radius: 100%;
+	}
+	/* ***************** */
+
+	.fad{
+		padding:7px 10px;
+		background: transparent;
+		border-radius: 5px;
+		transition: background 0.7s;
+		text-align: center;
+		margin-left: 9%;
+	}
+	.fad:hover {
+		padding:7px 10px;
+		background: MistyRose;
+		border-radius: 5px;
+		transition: background 0.7s;
+	}
 .sky-form .radio, .sky-form .checkbox {
     font-size: 12px;
 }

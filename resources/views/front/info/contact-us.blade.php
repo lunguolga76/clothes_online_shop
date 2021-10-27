@@ -8,7 +8,7 @@ Contacts
 @section('content')
 	<!-- Section - contacts -->
   <div class="container col-xl-10 col-md-6 col-lg-10 col-sm-12">
-    <section class="my-5">
+    <section class="my-1">
       <!-- Section heading -->
       <h1 class="h1-responsive font-weight-bold text-center text-dark my-5">Contact us</h1>
       <!-- Section description -->

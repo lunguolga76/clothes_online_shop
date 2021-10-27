@@ -35,7 +35,7 @@
                             </div><!-- end title -->
 
                             <div class="single-post-media">
-                                <img src="{{$article->image}}" alt="" class="img-fluid">
+                                <img src="{{$article->image_url}}" alt="" class="img-fluid">
                             </div><!-- end media -->
 
                             <div class="blog-content">  

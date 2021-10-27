@@ -1,61 +1,56 @@
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="author" content="Bootstrap-ecommerce">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="Bootstrap-ecommerce">
 
-<title>@yield('hometitle','Online Clothes Market')</title>
+    <title>@yield('hometitle','Online Clothes Market')</title>
 
-<link rel="shortcut icon" type="image/x-icon" href="images/favicom1.png">
-
-<!-- Bootstrap5 files-->
-<script src="/js/bootstrap.bundle.min.js" type="text/javascript"></script>
-<link href="/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-
-<!-- Font awesome 5 -->
-<link href="/fonts/fontawesome-all.min.css" type="text/css" rel="stylesheet">
-
-<!-- Custom styles for this template -->
-<link href="https://fonts.googleapis.com/css?family=Playfair&#43;Display:700,900&amp;display=swap" rel="stylesheet">
-    <!-- Custom styles for this template -->
-    <link href="blog.css" rel="stylesheet">
+    <link href="/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+    <!--jQuery(necessary for Bootstrap's JavaScript plugins)-->
+    <script src="/js/jquery-1.11.0.min.js"></script>
+    <!--Custom-Theme-files-->
+    <!--theme-style-->
+    <link href="/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="stylesheet" href="/css/flexslider.css">
+    <!--//theme-style-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <!-- Font awesome 5 -->
+    <link href="../fontawesome/css/fontawesome-all.min.css" type="text/css" rel="stylesheet">
     <script src="https://kit.fontawesome.com/1ad2e98449.js" crossorigin="anonymous"></script>
 
-<!-- custom style -->
-<link href="/css/ui.css" rel="stylesheet" type="text/css"/>
-<link href="/css/responsive.css" rel="stylesheet" media="only screen and (max-width: 1200px)" />
-<!--My styles-->
-<link rel="stylesheet" type="text/css" href="/css/style.css">
-
-<!-- custom javascript -->
-<script src="js/script.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-/// some script
-
-// jquery ready start
-$(document).ready(function() {
-	// jQuery code
-
-}); 
-// jquery end
-</script>
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!--start-menu-->
+    <script src="/js/simpleCart.min.js"> </script>
+    <link rel="stylesheet" href="/css/owlcarousel/owl.carousel.min.css">
+    <link rel="stylesheet" href="/css/owlcarousel/owl.theme.default.min.css">
+    <link href="/css/memenu.css" rel="stylesheet" type="text/css" media="all" />
+    <script type="text/javascript" src="/js/memenu.js"></script>
+    <script>$(document).ready(function(){$(".memenu").memenu();});
+    </script>
+    <!--dropdown-->
+    <script src="/js/jquery.easydropdown.js"></script>
+    <script src="/js/imagezoom.js"></script>
+    <script src="/js/jquery.flexslider.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
 </head>
 <body>
 
 @include('layouts.front_header')
-<section class="section lb">
+
             <div class="container">
-                <div class="row">
-                                     
+
+
                     @include('layouts.front_blog_sidebar')
-                
 
 
-                
+
+
                   @yield('content')
-                
+
             </div><!-- end row -->
         </div><!-- end container -->
     </section>

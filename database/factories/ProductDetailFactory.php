@@ -23,7 +23,7 @@ class ProductDetailFactory extends Factory
     public function definition()
     {
         return [
-            'product_id'=>Product::factory(),
+            'product_id'=>$this->faker->unique()->numberBetween($min = 1, $max = 50),
             'image_path'=>$this->faker->image('storage/app/public',$width = 640, $height = 480, null, false),
             'status'=>$this->faker->boolean(true),
             'color'=>$this->faker->colorName,

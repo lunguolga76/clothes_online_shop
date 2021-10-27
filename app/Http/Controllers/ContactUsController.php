@@ -17,7 +17,7 @@ class ContactUsController extends Controller
     {
     
 
-        return view ('front.contact-us'); 
+        return view ('front.info.contact-us');
     }
 
     public function storeContactInfo(ContactUsRequest $request, ContactUsMailer $mailer)

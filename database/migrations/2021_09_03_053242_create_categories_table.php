@@ -18,7 +18,6 @@ class CreateCategoriesTable extends Migration
             $table->unsignedBigInteger('section_id');
             $table->string('name');
             $table->string('image_path')->nullable();
-            $table->float('discount')->nullable();
             $table->text('description');
             $table->timestamps();
 

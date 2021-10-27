@@ -9,7 +9,13 @@ class ProductDetail extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['product_id','image_path','status','color', 'weight','fabric'];
+    protected $fillable = ['product_id', 'image_path', 'status', 'color', 'weight', 'fabric'];
+
+    public function getImageUrlAttribute(): string
+    {
+        return \Illuminate\Support\Facades\Storage::url($this->image_path);
+    }
+
 
     public function product(){
         return $this->belongsTo(Product::class);

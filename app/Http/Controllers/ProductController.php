@@ -2,27 +2,30 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+
+use App\Http\Filters\ArticleFilter;
+use App\Http\Filters\ProductFilter;
 use  App\Models\Product;
 use  App\Models\ProductDetail;
-use  App\Services\Logging\ViewLogger;
+use Illuminate\Http\Request;
+
 
 class ProductController extends Controller
 {
-    public function index ()
+    public function index (Request $request, ProductFilter $filters)
     {
-        $products = Product::paginate(12);
-          //dd($products->all());
-        return view ('front.products',compact('products'));
+        $products = Product::with('productDetail')->filter($filters)->paginate(9);
+
+        return view ('front.product.products',compact('products'));
     }
 
-    public function show(int $productId,  ViewLogger $viewLogger){
-       // dd(Article::all());
+    public function show(int $productId){
+
         $product = Product::findOrFail($productId);
-        $viewLogger->logView($product);
 
+        // $viewLogger->logView($product);
 
-        return view ('front.product-details', compact('product'));
+        return view ('front.product.product-details', compact('product'));
 
     }
 
