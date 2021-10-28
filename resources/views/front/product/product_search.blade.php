@@ -23,7 +23,7 @@
                                 <div class="product-bottom">
                                     <h3>{{$product->name}}</h3>
                                     <h4>{{$product->category->name}}</h4>
-                                    <p>{{$product->description}}w</p>
+                                    <p>{{$product->description}}</p>
                                     <h4><a class="item_add" href=""><i></i></a> <span class=" item_price">$ {{$product->unit_price}}</span></h4>
                                 </div>
                                 <div class="srch">

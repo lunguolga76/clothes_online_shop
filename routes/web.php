@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\InfoController;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\SubscribeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserInfoController;
 use App\Http\Controllers\EmailCheckApiController;
@@ -34,6 +35,10 @@ Route::get('/category/{id}', [CategoryController::class, 'show'])->name('show.ca
 Route::get('/products', [ProductController::class, 'index'])->name('index.products');
 
 Route::get('/products/{id}', [ProductController::class, 'show'])->name('show.product');
+
+Route::get('/subscribe', [SubscribeController::class, 'subscribe'])->name('subscribe.show');
+
+Route::post('/subscribe', [SubscribeController::class, 'storeSubscribers'])->name('subscribe.store');
 
 Route::get('/search',[SearchController::class,'index'])->name('search');
 

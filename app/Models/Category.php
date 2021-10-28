@@ -17,7 +17,7 @@ class Category extends Model
     }
 
     public function section(){
-        return $this->belongTo(Section::class);
+        return $this->belongsTo(Section::class);
     }
 
     public function products(){

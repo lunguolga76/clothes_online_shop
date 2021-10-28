@@ -7,19 +7,55 @@ Contacts
 
 @section('content')
 	<!-- Section - contacts -->
-  <div class="container col-xl-10 col-md-6 col-lg-10 col-sm-12">
-    <section class="my-1">
+
+    <section class="my-1 mx-4">
       <!-- Section heading -->
       <h1 class="h1-responsive font-weight-bold text-center text-dark my-5">Contact us</h1>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    @if(session()->has('message'))
+                        <div class="alert alert-success text-capitalize fw-bold fs-3">
+                            {{ session()->get('message') }}
+                        </div>
+                    @endif
+                </div>
+            </div>
+        </div>
       <!-- Section description -->
-      <p class="text-center w-responsive mx-auto pb-5">If you would like to contact the Mirillis Lifestyle Collection with questions, comments or suggestions simply fill out and submit the form below</p>
-      @if(session()->has('message'))
-    <div class="alert alert-success">
-        {{ session()->get('message') }}
-    </div>
-@endif
+      <h3 class="text-center w-responsive mx-auto pb-5">If you would like to contact the MyCompany with questions, comments or suggestions simply fill out and submit the form below</h3>
+        <div class="row">
+            <div class="col-lg-6"></div>
+            <div class="col-lg-6">
+                <div class="row text-center">
+                    <div class="col-md-4 ic">
+                        <a class="btn-floating blue accent-1">
+                            <i class="fa fa-map-marker-alt shadow text-white"></i>
+                        </a>
+                        <h5 class="text-dark font-weight-bold border-danger">Chisinau, 94126</h5>
+                        <h5 class="mb-md-0 font-weight-bold text-dark">Moldova</h5>
+                    </div>
+                    <div class="col-md-4 ic">
+                        <a class="btn-floating blue accent-1">
+                            <i class="fas fa-phone shadow text-white"></i>
+                        </a>
+                        <h5 class="text-dark font-weight-bold">+ 373 79001100</h5>
+                        <h5 class="mb-md-0 text-dark font-weight-bold">Mon - Fri, <br> 8:00-22:00</h5>
+                    </div>
+                    <div class="col-md-4 ic">
+                        <a class="btn-floating blue accent-1">
+                            <i class="fas fa-envelope shadow text-white"></i>
+                        </a>
+                        <h5 class="text-dark font-weight-bold">info@mycompany.com</h5>
+                        <h5 class="mb-0 text-dark font-weight-bold">sale@mycompany.com</h5>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
       <!-- Grid row -->
-      <div class="row">
+      <div class="row my-2">
         <!-- Grid column -->
         <div class="col-lg-6 mb-lg-0 mb-4">
           <!-- Form with header -->
@@ -104,37 +140,16 @@ Contacts
           <!-- Form with header -->
         </div><!-- Grid column -->
         <div class="col-lg-6 mb-lg-0 mb-4"><!--Google map-->
-          <div id="map-container-section" class="z-depth-1-half map-container-section mb-4 border border-secondary shadow-sm rounded" style="height: 400px">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2718.7419801456817!2d28.808401315013093!3d47.045293634577185!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40c97d979c02dc3d%3A0xdd17d2a457e96bb4!2sFabrica%20de%20mobila%20Confort!5e0!3m2!1sen!2sit!4v1587310293209!5m2!1sen!2sit" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+          <div id="map-container-section"
+               class="z-depth-1-half map-container-section mb-4 border border-secondary shadow-sm rounded"
+               style="height: 100%">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2718.7419801456817!2d28.808401315013093!3d47.045293634577185!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40c97d979c02dc3d%3A0xdd17d2a457e96bb4!2sFabrica%20de%20mobila%20Confort!5e0!3m2!1sen!2sit!4v1587310293209!5m2!1sen!2sit" width=100% height=100% frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
           </div>
-          <!-- Buttons-->
-          <div class="row text-center">
-            <div class="col-md-4 ic">
-              <a class="btn-floating blue accent-1">
-                <i class="fas fa-map-marker-alt shadow text-white"></i>
-              </a>
-              <p class="text-dark font-weight-bold border-danger">Chisinau, 94126</p>
-              <p class="mb-md-0 font-weight-bold text-dark">Moldova</p>
-            </div>
-            <div class="col-md-4 ic">
-              <a class="btn-floating blue accent-1">
-                <i class="fas fa-phone shadow text-white"></i>
-              </a>
-              <p class="text-dark font-weight-bold">+ 373 79001100</p>
-              <p class="mb-md-0 text-dark font-weight-bold">Mon - Fri, <br> 8:00-22:00</p>
-            </div>
-            <div class="col-md-4 ic">
-              <a class="btn-floating blue accent-1">
-                <i class="fas fa-envelope shadow text-white"></i>
-              </a>
-              <p class="text-dark font-weight-bold">info@mirillis.com</p>
-              <p class="mb-0 text-dark font-weight-bold">sale@mirillis.com</p>
-            </div>
-          </div>
+
         </div><!-- Grid column -->
       </div><!-- Grid row -->
     </section><!-- Section: Contact v.1 -->
-    </div>
-    <hr />
+
+
 
 @endsection

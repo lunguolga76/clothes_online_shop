@@ -5,11 +5,10 @@
             <div class="row1 scroll-pane">
                 <div class="col col-4">
                     <ul>
-                    @foreach($sections as $section)
-                        <li><a href="{{$section->id}}" class="text-decoration-none text-uppercase fw-bold">{{$section->name}}</a></li>
-                            @foreach($cats as $cat)
-                                <li><a href="" class="text-decoration-none text-uppercase">{{$cat->name}}</a></li>
-                            @endforeach
+                    @foreach($cats as $cat)
+                        <li><a href="{{route('index.categories',['$cat->section->name'])}}" class="text-decoration-none text-uppercase fw-bold">{{$cat->section->name}}</a></li>
+                            <li><a href="{{route('index.categories',['$cat->name'])}}" class="text-decoration-none text-uppercase fw-bold">{{$cat->name}}</a></li>
+
                     @endforeach
                     </ul>
                 </div>
@@ -58,6 +57,3 @@
     </div>
 </div>
 <div class="clearfix"> </div>
-</div>
-</div>
-</div>

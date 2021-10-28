@@ -48,7 +48,7 @@ class AppServiceProvider extends ServiceProvider
         $view->with('popular_articles', Article::orderBy('views','desc')->limit(4)->get());
         $view->with('blog_cats', BlogCategory::withCount('articles')->orderBy('articles_count', 'desc')->get());
         $view->with('sections', Section::orderBy('name', 'desc')->get());
-        $view->with('cats', Category::orderBy('name', 'desc')->limit(6)->get());
+        $view->with('cats', Category::with('section')->orderBy('name', 'desc')->limit(6)->get());
         $view->with('new_products', Product::orderBy('id','desc')->limit(3)->get());
         });
 

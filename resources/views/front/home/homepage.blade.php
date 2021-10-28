@@ -5,6 +5,18 @@ Homepage
 
 
 @section('content')
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                @if(session()->has('message'))
+                    <div class="alert alert-success text-capitalize fw-bold fs-3">
+                        {{ session()->get('message') }}
+                    </div>
+                @endif
+            </div>
+        </div>
+    </div>
+
 
 
 
@@ -18,7 +30,7 @@ Homepage
             <div class="about-top grid-1">
                 <h1 class="text-center my-4">Category with discounts</h1>
                 @foreach($categories as $category)
-                <a href="{{route('index.products',[$category->id])}}" >
+                <a href="{{route('index.products',[$category->name])}}" >
                 <div class="col-md-4 about-left">
                     <figure class="effect-bubba">
                         <img class="img-responsive img-thumbnail" src="{{$category->image_path}}" alt=""/>

@@ -47,9 +47,12 @@
 <div class="footer">
     <div class="container">
         <div class="footer-top">
+            @error('email')
+            <div class="alert alert-danger">{{$message}}</div>
+            @enderror
             <div class="col-md-6 footer-left">
-                <form>
-                    <input type="text" value="Enter Your Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Enter Your Email';}">
+                <form name="subscribe" method="post" action="{{route('subscribe.store')}}">@csrf
+                    <input type="text" name="email"  placeholder="Enter Your Email">
                     <input type="submit" value="Subscribe">
                 </form>
             </div>
